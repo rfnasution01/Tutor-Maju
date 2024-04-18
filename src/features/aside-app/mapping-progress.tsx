@@ -8,7 +8,7 @@ export function MappingProgress() {
       <div className="flex flex-col gap-y-16">
         {DataProgress.map((item, idx) => (
           <div
-            className="flex items-center gap-x-4 rounded-lg bg-slate-100 p-16"
+            className="flex transform-gpu items-center gap-x-12 rounded-lg bg-slate-100 p-16 transition-transform duration-300 hover:scale-105 hover:cursor-pointer"
             key={idx}
           >
             <span className="w-2/12 text-center">{item?.icon}</span>

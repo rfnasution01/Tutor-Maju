@@ -1,7 +1,7 @@
 import { HeaderWithLogo } from '@/components/HeaderLogo'
-import { UpgradePlan } from './upgrade-plan'
 import { ChevronDown } from 'lucide-react'
 import { MappingProgress } from './mapping-progress'
+import { MappingTask } from './mapping-task'
 
 export function AsideProgressApp() {
   return (
@@ -18,7 +18,7 @@ export function AsideProgressApp() {
       />
 
       <MappingProgress />
-      <UpgradePlan />
+      <MappingTask />
     </div>
   )
 }

@@ -10,7 +10,7 @@ export default function AppLayout() {
       <section className="col-span-8">
         <Outlet />
       </section>
-      <aside className="col-span-2">
+      <aside className="col-span-2 h-screen">
         <AsideProgressApp />
       </aside>
     </main>
