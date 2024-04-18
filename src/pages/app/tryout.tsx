@@ -1,5 +1,4 @@
-import { HeaderTryOut } from '@/features/tryout'
-import { MappingTryOut } from '@/features/tryout/mapping-tryout'
+import { HeaderTryOut, MappingTryOut } from '@/features/tryout'
 import { useState } from 'react'
 
 export default function TryOutApp() {

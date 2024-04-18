@@ -9,8 +9,8 @@ export function MappingTryOut({ type }: { type: string }) {
         (item, idx) => (
           <div
             className={clsx(
-              `col-span-4 flex flex-col gap-y-24 p-24 hover:cursor-pointer hover:shadow-lg`,
-              { 'bg-emerald-50': item?.tag.includes('Sedang Berlangsung') },
+              `col-span-4 flex flex-col gap-y-24 rounded-2xl p-24 hover:cursor-pointer hover:shadow-lg`,
+              { 'bg-purple-200': item?.tag.includes('Sedang Berlangsung') },
               { 'bg-white': !item?.tag.includes('Sedang Berlangsung') },
             )}
             key={idx}

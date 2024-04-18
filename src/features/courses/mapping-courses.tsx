@@ -7,7 +7,10 @@ export function MappingCourses({ type }: { type: string }) {
     <div className="grid grid-cols-12 gap-32">
       {DataLesson.filter((item) => item?.type.includes(type)).map(
         (item, idx) => (
-          <div className={`relative col-span-4 hover:shadow-2xl`} key={idx}>
+          <div
+            className={`relative col-span-4 rounded-2xl hover:shadow-2xl`}
+            key={idx}
+          >
             <img
               src={item?.imgBg}
               alt="login"
