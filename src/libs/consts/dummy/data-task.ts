@@ -5,7 +5,7 @@ export const DataUpcomingTask = [
     date: '18 Apr 2024, Thursday',
   },
   {
-    title: 'Kedinasan: Intelensi Umum',
+    title: 'Kedinasan: Intelegensi Umum',
     category: 'course',
     date: '19 Apr 2024, Friday',
   },
