@@ -15,7 +15,7 @@ export const DataUpcomingTask = [
     date: '20 Apr 2024, Saturday',
   },
   {
-    title: 'PPPK: Tryout SKD',
+    title: 'CPNS: Tryout SKD',
     category: 'try out',
     date: '21 Apr 2024, Sunday',
   },

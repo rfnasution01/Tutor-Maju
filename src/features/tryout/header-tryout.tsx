@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { Dispatch, SetStateAction } from 'react'
 
-export function HeaderCourses({
+export function HeaderTryOut({
   type,
   setType,
 }: {
@@ -10,9 +10,9 @@ export function HeaderCourses({
 }) {
   return (
     <div className="flex items-center justify-between">
-      <h1 className="text-[3rem] font-bold">All Courses</h1>
+      <h1 className="text-[3rem] font-bold">All Try Out</h1>
       <div className="flex items-center gap-x-16">
-        {['All', 'Ongoing', 'Favorite', 'Completed'].map((item, idx) => (
+        {['All', 'Free', 'Premium'].map((item, idx) => (
           <div
             className={clsx(
               'border-b p-16 text-[1.8rem] hover:cursor-pointer',

@@ -18,3 +18,4 @@ export const NotFoundPage = loadable(() => import('@/pages/not-found'))
 // ----- App ----
 export const HomeApp = loadable(() => import('@/pages/app/home'))
 export const CoursesApp = loadable(() => import('@/pages/app/courses'))
+export const TryOutApp = loadable(() => import('@/pages/app/tryout'))

@@ -6,7 +6,7 @@ export default function CoursesApp() {
 
   return (
     <div className="flex flex-col gap-y-32">
-      <HeaderCourses coursesChoose={type} setCoursesChoose={setType} />
+      <HeaderCourses type={type} setType={setType} />
       <MappingCourses type={type} />
     </div>
   )
