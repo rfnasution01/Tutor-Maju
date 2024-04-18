@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
 import {
   AppLayout,
+  CoursesApp,
   HomeApp,
   HomePage,
   NotFoundPage,
@@ -22,6 +23,7 @@ export const router = createBrowserRouter([
         children: [
           { path: '', element: <HomeApp /> },
           { path: 'dashboard', element: <HomeApp /> },
+          { path: 'courses', element: <CoursesApp /> },
         ],
       },
     ],

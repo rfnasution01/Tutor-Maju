@@ -8,10 +8,10 @@ export function MappingTask() {
       <div className="flex flex-col gap-y-16">
         {DataUpcomingTask.map((item, idx) => (
           <div
-            className="flex transform-gpu items-center gap-x-12 rounded-lg bg-slate-100 p-16 transition-transform duration-300 hover:scale-105 hover:cursor-pointer"
+            className="flex transform-gpu items-center gap-x-12 rounded-lg transition-transform duration-300 hover:scale-105 hover:cursor-pointer hover:shadow"
             key={idx}
           >
-            <span className="w-2/12 text-center">
+            <span className="p-12 text-center">
               {item?.category.includes('course') ? <BookOpen /> : <Medal />}
             </span>
             <div className="flex flex-1 flex-col gap-y-4">

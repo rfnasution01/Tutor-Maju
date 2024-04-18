@@ -1,5 +1,6 @@
 import { ProgressBar } from '@/components/ProgressBar'
 import { DataProgress } from '@/libs/consts/dummy/data-progress'
+import clsx from 'clsx'
 
 export function MappingProgress() {
   return (
@@ -8,10 +9,19 @@ export function MappingProgress() {
       <div className="flex flex-col gap-y-16">
         {DataProgress.map((item, idx) => (
           <div
-            className="flex transform-gpu items-center gap-x-12 rounded-lg bg-slate-100 p-16 transition-transform duration-300 hover:scale-105 hover:cursor-pointer"
+            className="flex transform-gpu items-center gap-x-12 rounded-lg transition-transform duration-300 hover:scale-105 hover:cursor-pointer hover:shadow"
             key={idx}
           >
-            <span className="w-2/12 text-center">{item?.icon}</span>
+            <span
+              className={clsx('p-12 text-center', {
+                'text-red-700': idx === 0,
+                'text-yellow-700': idx === 1,
+                'text-green-700': idx === 2,
+                'text-blue-700': idx === 3,
+              })}
+            >
+              {item?.icon}
+            </span>
             <div className="flex flex-1 flex-col gap-y-4">
               <h5 className="font-bold">{item?.title}</h5>
               <h6 className="text-[1.4rem] font-light text-slate-500">
