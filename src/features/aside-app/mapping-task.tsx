@@ -1,4 +1,5 @@
 import { DataUpcomingTask } from '@/libs/consts/dummy/data-task'
+import clsx from 'clsx'
 import { BookOpen, Medal } from 'lucide-react'
 
 export function MappingTask() {
@@ -11,7 +12,12 @@ export function MappingTask() {
             className="flex transform-gpu items-center gap-x-12 rounded-lg transition-transform duration-300 hover:scale-105 hover:cursor-pointer hover:shadow"
             key={idx}
           >
-            <span className="p-12 text-center">
+            <span
+              className={clsx('p-12 text-center', {
+                'text-fuchsia-700': item?.category.includes('course'),
+                'text-amber-700': !item?.category.includes('course'),
+              })}
+            >
               {item?.category.includes('course') ? <BookOpen /> : <Medal />}
             </span>
             <div className="flex flex-1 flex-col gap-y-8">
