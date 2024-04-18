@@ -28,7 +28,7 @@ export const DataLesson = [
   },
   {
     title: 'Bimbel Bahasa Inggris TOEFL, CPNS/PPPK, BUMN & Kedinasan',
-    tag: ['CPNS', 'PPPK', 'BUMN', 'Kedinasan'],
+    tag: ['CPNS', 'PPPK', 'BUMN'],
     lessons: '18 Lessons',
     time: '2h 40min',
     imgBg: '/img/app-bg.jpg',

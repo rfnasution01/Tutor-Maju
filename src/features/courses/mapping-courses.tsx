@@ -6,7 +6,7 @@ export function MappingCourses() {
   return (
     <div className="grid grid-cols-12 gap-32">
       {DataLesson.map((item, idx) => (
-        <div className={`relative col-span-4`} key={idx}>
+        <div className={`relative col-span-4 hover:shadow-2xl`} key={idx}>
           <img
             src={item?.imgBg}
             alt="login"
@@ -15,21 +15,21 @@ export function MappingCourses() {
           <div className="absolute left-[2rem] top-[2rem] h-[calc(100%_-_4rem)] w-[calc(100%_-_4rem)] p-8">
             <div className="flex h-full flex-col gap-y-8">
               <div className="flex justify-between">
-                <div className="flex flex-col gap-y-4">
+                <div className="flex flex-col gap-y-8">
                   <div className="flex items-center gap-12">
                     {item?.tag.map((data, id) => (
                       <div
                         className={clsx(
-                          'rounded-full px-12 py-4 text-[1.2rem]',
+                          'rounded-full px-16 py-4 text-[1.2rem] text-white',
                           {
-                            'bg-red-300': data?.toLowerCase().includes('bumn'),
-                            'bg-yellow-300': data
+                            'bg-red-500': data?.toLowerCase().includes('bumn'),
+                            'bg-yellow-500': data
                               ?.toLowerCase()
                               .includes('cpns'),
-                            'bg-green-300': data
+                            'bg-green-500': data
                               ?.toLowerCase()
                               .includes('kedinasan'),
-                            'bg-blue-300': data?.toLowerCase().includes('pppk'),
+                            'bg-blue-500': data?.toLowerCase().includes('pppk'),
                           },
                         )}
                         key={id}
@@ -43,24 +43,31 @@ export function MappingCourses() {
                   </h5>
                   <h6 className="font-light text-slate-300">{item?.lessons}</h6>
                 </div>
-                <span className="text-yellow-800 hover:cursor-pointer ">
-                  <Bookmark />
+                <span className="text-yellow-800 hover:cursor-pointer">
+                  <Bookmark
+                    fill={
+                      item?.type.includes('favorite')
+                        ? '#854D0E80'
+                        : 'transparent'
+                    }
+                  />
                 </span>
               </div>
               <div className="flex flex-1 items-center justify-center">
-                <div className="rounded-lg bg-white px-16 py-8 opacity-40">
+                <div className="rounded-2xl bg-white px-24 py-8 opacity-40 hover:cursor-pointer hover:bg-red-600 hover:text-white hover:opacity-100">
                   <Play size={30} />
                 </div>
               </div>
               <div className="flex items-center justify-between">
-                <h6 className="font-light text-slate-300">{item?.time}</h6>
-                <div className="flex items-center gap-x-4">
+                <div className="flex items-center gap-x-8">
                   <img
                     src={item?.imgProfile}
                     alt={item?.lessons}
                     className="w-[4rem] rounded-full border border-white"
                   />
+                  <span className="text-slate-200">John Doe</span>
                 </div>
+                <h6 className="font-light text-slate-300">{item?.time}</h6>
               </div>
             </div>
           </div>
