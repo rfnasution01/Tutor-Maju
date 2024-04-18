@@ -7,7 +7,7 @@ export default function AppLayout() {
       <aside className="col-span-2 h-screen">
         <AsideNavigationApp />
       </aside>
-      <section className="col-span-8">
+      <section className="col-span-8 bg-gradient-to-br from-purple-50 via-blue-50 to-orange-50">
         <Outlet />
       </section>
       <aside className="col-span-2 h-screen">
