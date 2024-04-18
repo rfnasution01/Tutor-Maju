@@ -1,6 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { AppLayout, HomePage, NotFoundPage, RootLayout } from './loadables'
-
+import {
+  AppLayout,
+  HomeApp,
+  HomePage,
+  NotFoundPage,
+  RootLayout,
+} from './loadables'
 
 export const router = createBrowserRouter([
   {
@@ -13,8 +18,12 @@ export const router = createBrowserRouter([
       },
       {
         path: 'app',
-        element: <AppLayout />
-      }
+        element: <AppLayout />,
+        children: [
+          { path: '', element: <HomeApp /> },
+          { path: 'dashboard', element: <HomeApp /> },
+        ],
+      },
     ],
   },
   {
