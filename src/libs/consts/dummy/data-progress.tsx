@@ -3,7 +3,7 @@ import { Building, Building2, Hotel, University } from 'lucide-react'
 export const DataProgress = [
   {
     title: 'BUMN',
-    desc: 'Beginner',
+    desc: 'Advanced',
     progress: 50,
     icon: <Building />,
   },
@@ -15,7 +15,7 @@ export const DataProgress = [
   },
   {
     title: 'Kedinasan',
-    desc: 'Intermediate',
+    desc: 'Beginner',
     progress: 80,
     icon: <University />,
   },
