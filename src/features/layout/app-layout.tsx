@@ -3,8 +3,8 @@ import { AsideNavigationApp, AsideProgressApp } from '../aside-app'
 
 export default function AppLayout() {
   return (
-    <main className="scrollbar grid h-full grid-cols-12 overflow-scroll">
-      <aside className="col-span-2">
+    <main className="scrollbar overflow-scrol grid h-full grid-cols-12">
+      <aside className="col-span-2 h-screen">
         <AsideNavigationApp />
       </aside>
       <section className="col-span-8">

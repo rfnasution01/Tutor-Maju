@@ -1,10 +1,11 @@
 import { Button } from '@/components/Button'
 import { HeaderWithLogo } from '@/components/HeaderLogo'
 import { MappingNavigation } from './mapping-nav'
+import { UpgradePlan } from './upgrade-plan'
 
 export function AsideNavigationApp() {
   return (
-    <div className="flex h-full flex-col gap-y-48 bg-white p-48">
+    <div className="scrollbar flex h-full flex-col gap-y-32 overflow-y-scroll bg-white p-48">
       <HeaderWithLogo
         title="Tu7u"
         logo="/img/logo.png"
@@ -18,6 +19,7 @@ export function AsideNavigationApp() {
         rounded="rounded-md"
       />
       <MappingNavigation />
+      <UpgradePlan />
     </div>
   )
 }
