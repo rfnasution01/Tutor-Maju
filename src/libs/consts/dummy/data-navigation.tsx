@@ -5,7 +5,6 @@ import {
   LayoutDashboard,
   MessageCircleMore,
   Settings,
-  User,
 } from 'lucide-react'
 
 export const DataNavigation = [
@@ -29,10 +28,7 @@ export const DataNavigation = [
     title: 'Forum',
     icon: <MessageCircleMore size={18} />,
   },
-  {
-    title: 'Personal',
-    icon: <User size={18} />,
-  },
+
   {
     title: 'Settings',
     icon: <Settings size={18} />,
