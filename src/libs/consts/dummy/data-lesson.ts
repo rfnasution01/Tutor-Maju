@@ -6,7 +6,7 @@ export const DataLesson = [
     time: '2h 40min',
     imgBg: '/img/app-bg.jpg',
     imgProfile: '/img/logo.png',
-    type: ['completed'],
+    type: ['all', 'completed'],
   },
   {
     title: 'Bimbel SKD CPNS/PPPK',
@@ -15,7 +15,7 @@ export const DataLesson = [
     time: '2h 40min',
     imgBg: '/img/app-bg.jpg',
     imgProfile: '/img/logo.png',
-    type: [''],
+    type: ['all'],
   },
   {
     title: 'Bimbel TKD BUMN',
@@ -24,7 +24,7 @@ export const DataLesson = [
     time: '2h 40min',
     imgBg: '/img/app-bg.jpg',
     imgProfile: '/img/logo.png',
-    type: ['favorite'],
+    type: ['all', 'favorite'],
   },
   {
     title: 'Bimbel Bahasa Inggris TOEFL, CPNS/PPPK, BUMN & Kedinasan',
@@ -33,7 +33,7 @@ export const DataLesson = [
     time: '2h 40min',
     imgBg: '/img/app-bg.jpg',
     imgProfile: '/img/logo.png',
-    type: ['completed'],
+    type: ['all', 'completed'],
   },
   {
     title: 'Bimbel AKHLAK BUMN',
@@ -42,6 +42,6 @@ export const DataLesson = [
     time: '2h 40min',
     imgBg: '/img/app-bg.jpg',
     imgProfile: '/img/logo.png',
-    type: ['ongoing', 'favorite'],
+    type: ['all', 'ongoing', 'favorite'],
   },
 ]

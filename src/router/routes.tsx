@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
 import {
   AppLayout,
+  ComingSoonPage,
   CoursesApp,
   HomeApp,
   HomePage,
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
           { path: '', element: <HomeApp /> },
           { path: 'dashboard', element: <HomeApp /> },
           { path: 'courses', element: <CoursesApp /> },
+          { path: 'try-out', element: <ComingSoonPage /> },
+          { path: 'forum', element: <ComingSoonPage /> },
+          { path: 'file', element: <ComingSoonPage /> },
+          { path: 'settings', element: <ComingSoonPage /> },
         ],
       },
     ],

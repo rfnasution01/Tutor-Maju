@@ -1,14 +1,18 @@
 import clsx from 'clsx'
-import { useState } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 
-export function HeaderCourses() {
-  const [coursesChoose, setCoursesChoose] = useState<string>('all')
-
+export function HeaderCourses({
+  coursesChoose,
+  setCoursesChoose,
+}: {
+  coursesChoose: string
+  setCoursesChoose: Dispatch<SetStateAction<string>>
+}) {
   return (
     <div className="flex items-center justify-between">
       <h1 className="text-[3rem] font-bold">All Courses</h1>
       <div className="flex items-center gap-x-16">
-        {['All', 'Ongoing', 'Favorite', 'Complete'].map((item, idx) => (
+        {['All', 'Ongoing', 'Favorite', 'Completed'].map((item, idx) => (
           <div
             className={clsx(
               'border-b p-16 text-[1.8rem] hover:cursor-pointer',
