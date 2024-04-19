@@ -25,3 +25,6 @@ export const FileApp = loadable(() => import('@/pages/app/file'))
 
 // ----- Login -----
 export const LoginPage = loadable(() => import('@/pages/login'))
+export const ActivateAccountPage = loadable(
+  () => import('@/pages/login/active-account'),
+)

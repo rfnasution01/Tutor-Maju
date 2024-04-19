@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
 import {
+  ActivateAccountPage,
   AppLayout,
   ComingSoonPage,
   CoursesApp,
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
           {
             path: '',
             element: <LoginPage />,
+          },
+          {
+            path: 'activate-account',
+            element: <ActivateAccountPage />,
           },
         ],
       },
