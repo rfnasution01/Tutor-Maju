@@ -1,8 +1,23 @@
 import { Outlet } from 'react-router-dom'
 import { AsideNavigationApp, AsideProgressApp } from '../aside-app'
 import { BellDot } from 'lucide-react'
+import { useGetBiodataQuery } from '@/store/slices/biodataAPI'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { setStateBiodataPribadi } from '@/store/reducer/statePribadi'
+import { setStateBiodataSekolah } from '@/store/reducer/stateSekolah'
 
 export default function AppLayout() {
+  const dispatch = useDispatch()
+  const { data: biodataData } = useGetBiodataQuery()
+
+  useEffect(() => {
+    if (biodataData?.data) {
+      dispatch(setStateBiodataPribadi(biodataData?.data?.pribadi))
+      dispatch(setStateBiodataSekolah(biodataData?.data?.sekolah))
+    }
+  }, [biodataData?.data])
+
   return (
     <main className="scrollbar overflow-scrol grid h-full grid-cols-12">
       <aside className="col-span-2 h-screen">
