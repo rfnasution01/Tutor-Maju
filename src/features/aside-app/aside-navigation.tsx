@@ -6,7 +6,11 @@ import { UpgradePlan } from './upgrade-plan'
 export function AsideNavigationApp() {
   return (
     <div className="scrollbar flex h-full flex-col gap-y-32 overflow-y-scroll bg-white px-48 py-32">
-      <HeaderWithLogo title="Tu7u" logo="/img/logo.png" classes="text-black" />
+      <HeaderWithLogo
+        title="Tu7u"
+        logo="/img/logo.png"
+        classes="text-black text-[3rem]"
+      />
       <Button
         child="Buy a Course"
         variant="solid"

@@ -1,11 +1,17 @@
 import { createBrowserRouter } from 'react-router-dom'
 import {
+  ActivateAccountPage,
   AppLayout,
   ComingSoonPage,
   CoursesApp,
   FileApp,
+  ForgotPasswordPage,
   HomePage,
+  LoginLayout,
+  LoginPage,
   NotFoundPage,
+  RegistrasiLayout,
+  RegistrasiPage,
   RootLayout,
   TryOutApp,
 } from './loadables'
@@ -30,6 +36,34 @@ export const router = createBrowserRouter([
           { path: 'forum', element: <ComingSoonPage /> },
           { path: 'file', element: <FileApp /> },
           { path: 'settings', element: <ComingSoonPage /> },
+        ],
+      },
+      {
+        path: 'login',
+        element: <LoginLayout />,
+        children: [
+          {
+            path: '',
+            element: <LoginPage />,
+          },
+          {
+            path: 'activate-account',
+            element: <ActivateAccountPage />,
+          },
+          {
+            path: 'forgot-password',
+            element: <ForgotPasswordPage />,
+          },
+        ],
+      },
+      {
+        path: 'registrasi',
+        element: <RegistrasiLayout />,
+        children: [
+          {
+            path: '',
+            element: <RegistrasiPage />,
+          },
         ],
       },
     ],

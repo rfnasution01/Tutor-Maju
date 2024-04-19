@@ -6,6 +6,12 @@ import loadable from '@loadable/component'
 
 export const RootLayout = loadable(() => import('@/App'))
 export const AppLayout = loadable(() => import('@/features/layout/app-layout'))
+export const LoginLayout = loadable(
+  () => import('@/features/layout/login-layout'),
+)
+export const RegistrasiLayout = loadable(
+  () => import('@/features/layout/registrasi-layout'),
+)
 
 // -----------------
 // ----- Pages -----
@@ -19,3 +25,15 @@ export const NotFoundPage = loadable(() => import('@/pages/not-found'))
 export const CoursesApp = loadable(() => import('@/pages/app/courses'))
 export const TryOutApp = loadable(() => import('@/pages/app/tryout'))
 export const FileApp = loadable(() => import('@/pages/app/file'))
+
+// ----- Login -----
+export const LoginPage = loadable(() => import('@/pages/login'))
+export const ActivateAccountPage = loadable(
+  () => import('@/pages/login/active-account'),
+)
+export const ForgotPasswordPage = loadable(
+  () => import('@/pages/login/forgot-password'),
+)
+
+// ----- Registrasi -----
+export const RegistrasiPage = loadable(() => import('@/pages/registrasi'))
