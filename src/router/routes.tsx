@@ -5,6 +5,7 @@ import {
   ComingSoonPage,
   CoursesApp,
   FileApp,
+  ForgotPasswordPage,
   HomePage,
   LoginLayout,
   LoginPage,
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
           {
             path: 'activate-account',
             element: <ActivateAccountPage />,
+          },
+          {
+            path: 'forgot-password',
+            element: <ForgotPasswordPage />,
           },
         ],
       },

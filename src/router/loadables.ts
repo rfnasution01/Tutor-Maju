@@ -28,3 +28,6 @@ export const LoginPage = loadable(() => import('@/pages/login'))
 export const ActivateAccountPage = loadable(
   () => import('@/pages/login/active-account'),
 )
+export const ForgotPasswordPage = loadable(
+  () => import('@/pages/login/forgot-password'),
+)

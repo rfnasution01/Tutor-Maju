@@ -116,7 +116,7 @@ export default function LoginPage() {
               <span
                 className="hover:cursor-pointer hover:text-primary-shade-500"
                 onClick={() => {
-                  navigate('')
+                  navigate('forgot-password')
                 }}
               >
                 Forgot Password?
