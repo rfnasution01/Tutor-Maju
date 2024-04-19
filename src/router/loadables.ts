@@ -34,3 +34,6 @@ export const ActivateAccountPage = loadable(
 export const ForgotPasswordPage = loadable(
   () => import('@/pages/login/forgot-password'),
 )
+
+// ----- Registrasi -----
+export const RegistrasiPage = loadable(() => import('@/pages/registrasi'))

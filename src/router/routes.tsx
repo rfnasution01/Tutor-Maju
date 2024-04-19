@@ -11,6 +11,7 @@ import {
   LoginPage,
   NotFoundPage,
   RegistrasiLayout,
+  RegistrasiPage,
   RootLayout,
   TryOutApp,
 } from './loadables'
@@ -58,6 +59,12 @@ export const router = createBrowserRouter([
       {
         path: 'registrasi',
         element: <RegistrasiLayout />,
+        children: [
+          {
+            path: '',
+            element: <RegistrasiPage />,
+          },
+        ],
       },
     ],
   },

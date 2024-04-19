@@ -12,7 +12,7 @@ export default function RegistrasiLayout() {
       />
       <div className="absolute left-0 top-0 h-full w-full">
         <div className="grid h-full grid-cols-12">
-          <div className="col-span-6 h-full bg-gradient-to-br from-purple-50 via-blue-50 to-orange-50 p-32">
+          <div className="col-span-6 h-full max-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-orange-50 p-64">
             <Outlet />
           </div>
         </div>
