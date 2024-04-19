@@ -16,6 +16,7 @@ import {
   SettingApp,
   TryOutApp,
 } from './loadables'
+import Cookies from 'js-cookie'
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,17 @@ export const router = createBrowserRouter([
       {
         path: 'app',
         element: <AppLayout />,
+        loader: async () => {
+          const jwtPayload = Cookies.get('token')
+
+          if (!jwtPayload) {
+            window.location.href = `/login`
+            Cookies.remove('token')
+            return null
+          }
+
+          return null
+        },
         children: [
           { path: '', element: <ComingSoonPage /> },
           { path: 'dashboard', element: <ComingSoonPage /> },
@@ -42,6 +54,16 @@ export const router = createBrowserRouter([
       {
         path: 'login',
         element: <LoginLayout />,
+        loader: async () => {
+          const jwtPayload = Cookies.get('token')
+
+          if (jwtPayload) {
+            window.location.href = `/app`
+            return null
+          }
+
+          return null
+        },
         children: [
           {
             path: '',
@@ -60,6 +82,16 @@ export const router = createBrowserRouter([
       {
         path: 'registrasi',
         element: <RegistrasiLayout />,
+        loader: async () => {
+          const jwtPayload = Cookies.get('token')
+
+          if (jwtPayload) {
+            window.location.href = `/app`
+            return null
+          }
+
+          return null
+        },
         children: [
           {
             path: '',
