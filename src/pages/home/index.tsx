@@ -1,5 +1,10 @@
 import { HeaderBerita, MappingBerita } from '@/features/berita'
-import { HeaderPengumuman } from '@/features/pengumuman'
+import {
+  BestPengumuman,
+  HeaderPengumuman,
+  MappingPengumuman,
+} from '@/features/pengumuman'
+import { ChevronRight } from 'lucide-react'
 
 export default function Home() {
   return (
@@ -8,8 +13,19 @@ export default function Home() {
         <HeaderBerita />
         <MappingBerita />
       </div>
-      <div className="col-span-4 rounded-2xl p-32">
+      <div className="col-span-4 flex flex-col gap-y-32 rounded-2xl p-32 ">
         <HeaderPengumuman />
+        <div className="flex items-center justify-between gap-x-32">
+          <p className="font-roboto text-[2.4rem] font-bold">Recomended</p>
+          <div className="flex items-center gap-x-8">
+            <p>View All</p>
+            <span>
+              <ChevronRight size={16} />
+            </span>
+          </div>
+        </div>
+        <BestPengumuman />
+        <MappingPengumuman />
       </div>
     </main>
   )
