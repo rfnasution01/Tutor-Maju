@@ -37,7 +37,7 @@ export function MappingBerita() {
           </div>
         </div>
         <div className="flex flex-1 items-center justify-center">
-          <img src="/img/nebula.png" alt="berita" className="w-[40rem]" />
+          <img src="/img/cosmic.png" alt="berita" className="w-[40rem]" />
         </div>
       </div>
       <div className="row-span-4 bg-blue-200">Test</div>
