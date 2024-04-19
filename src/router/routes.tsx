@@ -5,6 +5,7 @@ import {
   CoursesApp,
   FileApp,
   HomePage,
+  LoginLayout,
   NotFoundPage,
   RootLayout,
   TryOutApp,
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
           { path: 'file', element: <FileApp /> },
           { path: 'settings', element: <ComingSoonPage /> },
         ],
+      },
+      {
+        path: 'login',
+        element: <LoginLayout />,
       },
     ],
   },
