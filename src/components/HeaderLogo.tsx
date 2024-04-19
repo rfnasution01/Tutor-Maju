@@ -19,7 +19,7 @@ export function HeaderWithLogo({
 }) {
   return (
     <div
-      className={`${classes} flex items-center justify-center gap-x-12 font-roboto text-[3rem]`}
+      className={`${classes} flex items-center justify-center gap-x-12 font-roboto`}
     >
       {logo && (
         <img src={logo} alt="logo" className={`${logoClasses} w-[6rem]`} />
