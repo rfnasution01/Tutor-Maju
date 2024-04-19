@@ -4,6 +4,7 @@ import { api } from './api'
 import stateIdentitasSlices from './reducer/stateIdentitas.ts'
 import stateBiodataPribadiSlices from './reducer/statePribadi.ts'
 import stateBiodataSekolahSlices from './reducer/stateSekolah.ts'
+import stateSearch from './reducer/stateSearch.ts'
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     stateIdentitas: stateIdentitasSlices,
     stateBiodataPribadi: stateBiodataPribadiSlices,
     stateBiodataSekolah: stateBiodataSekolahSlices,
+    stateSearch: stateSearch,
   },
   devTools: true,
   middleware: (getDefaultMiddleware) =>
