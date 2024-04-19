@@ -6,6 +6,7 @@ import {
   FileApp,
   HomePage,
   LoginLayout,
+  LoginPage,
   NotFoundPage,
   RootLayout,
   TryOutApp,
@@ -36,6 +37,12 @@ export const router = createBrowserRouter([
       {
         path: 'login',
         element: <LoginLayout />,
+        children: [
+          {
+            path: '',
+            element: <LoginPage />,
+          },
+        ],
       },
     ],
   },

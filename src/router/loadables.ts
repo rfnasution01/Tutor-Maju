@@ -22,3 +22,6 @@ export const NotFoundPage = loadable(() => import('@/pages/not-found'))
 export const CoursesApp = loadable(() => import('@/pages/app/courses'))
 export const TryOutApp = loadable(() => import('@/pages/app/tryout'))
 export const FileApp = loadable(() => import('@/pages/app/file'))
+
+// ----- Login -----
+export const LoginPage = loadable(() => import('@/pages/login'))
