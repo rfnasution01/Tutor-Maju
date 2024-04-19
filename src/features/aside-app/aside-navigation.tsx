@@ -17,7 +17,15 @@ export function AsideNavigationApp() {
         <h5 className="border-b-2 border-primary pb-8 text-black">Maju</h5>
       </Link>
       <Button
-        child="Buy a Course"
+        child={
+          <div
+            onClick={() => {
+              navigate('/app/courses')
+            }}
+          >
+            Buy a Course
+          </div>
+        }
         variant="solid"
         textColor="text-white"
         bgColor="bg-primary"
