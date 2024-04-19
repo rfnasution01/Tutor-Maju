@@ -41,7 +41,7 @@ export function Button({
     <button
       disabled={disabled}
       type={type}
-      className={`${classes} ${width} ${variants} ${rounded} ${textColor} p-12 text-[2rem] disabled:cursor-not-allowed disabled:border-transparent disabled:bg-slate-100 disabled:text-slate-400`}
+      className={`${classes} ${width} ${variants} ${rounded} ${textColor} p-12 disabled:cursor-not-allowed disabled:border-transparent disabled:bg-slate-100 disabled:text-slate-400`}
     >
       {child}
     </button>
