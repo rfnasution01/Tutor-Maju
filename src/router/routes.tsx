@@ -13,6 +13,7 @@ import {
   RegistrasiLayout,
   RegistrasiPage,
   RootLayout,
+  SettingApp,
   TryOutApp,
 } from './loadables'
 
@@ -35,7 +36,7 @@ export const router = createBrowserRouter([
           { path: 'try-out', element: <TryOutApp /> },
           { path: 'forum', element: <ComingSoonPage /> },
           { path: 'file', element: <FileApp /> },
-          { path: 'settings', element: <ComingSoonPage /> },
+          { path: 'settings', element: <SettingApp /> },
         ],
       },
       {
