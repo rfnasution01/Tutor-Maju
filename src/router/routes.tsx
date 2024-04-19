@@ -10,6 +10,7 @@ import {
   LoginLayout,
   LoginPage,
   NotFoundPage,
+  RegistrasiLayout,
   RootLayout,
   TryOutApp,
 } from './loadables'
@@ -53,6 +54,10 @@ export const router = createBrowserRouter([
             element: <ForgotPasswordPage />,
           },
         ],
+      },
+      {
+        path: 'registrasi',
+        element: <RegistrasiLayout />,
       },
     ],
   },

@@ -182,7 +182,7 @@ export default function LoginPage() {
                 <span
                   className="text-primary-shade-500 hover:cursor-pointer"
                   onClick={() => {
-                    navigate('registrasi')
+                    navigate('/registrasi')
                   }}
                 >
                   Registrasi

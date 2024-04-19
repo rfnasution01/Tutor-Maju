@@ -9,6 +9,9 @@ export const AppLayout = loadable(() => import('@/features/layout/app-layout'))
 export const LoginLayout = loadable(
   () => import('@/features/layout/login-layout'),
 )
+export const RegistrasiLayout = loadable(
+  () => import('@/features/layout/registrasi-layout'),
+)
 
 // -----------------
 // ----- Pages -----
