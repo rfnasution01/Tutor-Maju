@@ -1,17 +1,15 @@
-import { useNavigate } from 'react-router-dom'
+import { HeaderBerita } from '@/features/berita'
+import { HeaderPengumuman } from '@/features/pengumuman'
 
 export default function Home() {
-  const navigate = useNavigate()
   return (
-    <div className="flex h-full items-center justify-center">
-      <div
-        className="bg-primary px-32 py-12 text-white hover:cursor-pointer"
-        onClick={() => {
-          navigate('/app')
-        }}
-      >
-        Go To App
+    <main className="scrollbar overflow-scrol grid h-full grid-cols-12 gap-x-32 px-32 pt-32">
+      <div className="col-span-8 rounded-2xl bg-gradient-to-br from-purple-50 via-blue-50 to-orange-50 p-32">
+        <HeaderBerita />
       </div>
-    </div>
+      <div className="col-span-4 rounded-2xl p-32">
+        <HeaderPengumuman />
+      </div>
+    </main>
   )
 }

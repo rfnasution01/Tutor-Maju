@@ -6,7 +6,7 @@ export default function RegistrasiLayout() {
       className={`scrollbar relative col-span-4 h-full overflow-auto rounded-2xl hover:shadow-2xl`}
     >
       <img
-        src="img/registrasi-bg.jpg"
+        src="/img/registrasi-bg.png"
         alt="login"
         className="h-screen w-full rounded-lg object-cover opacity-85"
       />
