@@ -1,5 +1,2 @@
 export * from './header-tryout'
 export * from './mapping-tryout'
-export * from './percobaan-langkah'
-export * from './mapping-percobaan'
-export * from './percobaan-detail'

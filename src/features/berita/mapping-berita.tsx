@@ -58,9 +58,10 @@ export function MappingBerita() {
           {/* --- Read Article --- */}
           <div className="flex">
             <Button
+              variant="solid"
               rounded="rounded-xl"
-              borderColor="border-primary-shade-200"
-              textColor="text-primary-shade-200 hover:bg-primary-shade-200 hover:text-white hover:border-transparent"
+              bgColor="bg-primary-shade-200 bg-opacity-40"
+              textColor="text-white"
               child={<div className="px-48">Read Article</div>}
             />
           </div>

@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import {
   ActivateAccountPage,
   AppLayout,
+  CBTApp,
   ComingSoonPage,
   CoursesApp,
   FileApp,
@@ -49,6 +50,7 @@ export const router = createBrowserRouter([
           { path: 'forum', element: <ComingSoonPage /> },
           { path: 'file', element: <FileApp /> },
           { path: 'settings', element: <SettingApp /> },
+          { path: 'cbt', element: <CBTApp /> },
         ],
       },
       {

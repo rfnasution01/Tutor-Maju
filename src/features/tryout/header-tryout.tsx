@@ -17,7 +17,7 @@ export function HeaderTryOut({
           : 'All Try Out'}
       </h1>
       <div className="flex items-center gap-x-16">
-        {['All', 'Free', 'Premium', 'Percobaan'].map((item, idx) => (
+        {['All', 'Free', 'Premium'].map((item, idx) => (
           <div
             className={clsx(
               'border-b p-16 text-[1.8rem] hover:cursor-pointer',
@@ -26,11 +26,7 @@ export function HeaderTryOut({
                   ?.toLowerCase()
                   .includes(type),
                 'border-transparent hover:border-primary hover:text-primary':
-                  !item?.toLowerCase().includes(type) &&
-                  !item?.toLowerCase().includes('percobaan'),
-                'border border-primary  text-primary': item
-                  ?.toLowerCase()
-                  .includes('percobaan'),
+                  !item?.toLowerCase().includes(type),
               },
             )}
             key={idx}
