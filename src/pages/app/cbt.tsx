@@ -2,7 +2,7 @@ import { HeaderCBT, MappingCBT } from '@/features/cbt'
 import { useState } from 'react'
 
 export default function CBTApp() {
-  const [type, setType] = useState<string>('all')
+  const [type, setType] = useState<string>('home')
 
   return (
     <div className="flex flex-col gap-y-32">
