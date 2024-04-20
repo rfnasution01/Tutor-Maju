@@ -64,6 +64,7 @@ export default function NewsLayout() {
       </div>
       <div className="flex flex-col gap-y-32 px-32">
         <BestNews data={data} />
+        <p className="font-roboto text-[3rem]">Related News</p>
         <div className="flex flex-col gap-y-32">
           <div className="grid grid-cols-12 gap-x-32">
             <div className="col-span-3 flex flex-col gap-y-24 hover:cursor-pointer">
