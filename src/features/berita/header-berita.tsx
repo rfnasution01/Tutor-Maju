@@ -1,3 +1,4 @@
+import { convertToSlug } from '@/libs/helpers/format-text'
 import clsx from 'clsx'
 import { Grid } from 'lucide-react'
 import { Link } from 'react-router-dom'
@@ -7,7 +8,12 @@ export function HeaderBerita() {
     <div className="flex w-full items-center justify-between gap-x-32 text-[2rem]">
       <div className="flex items-center gap-x-32">
         {['Tutor Maju', 'Berita Utama', 'Pengumuman'].map((item, idx) => (
-          <div
+          <Link
+            to={
+              item.includes('Tutor Maju')
+                ? '/'
+                : `/news?type=${convertToSlug(item)}`
+            }
             className={clsx(
               'flex items-center gap-x-8 rounded-full px-24 py-8 hover:cursor-pointer hover:bg-white',
               { 'bg-white': item.includes('Tutor Maju') },
@@ -18,7 +24,7 @@ export function HeaderBerita() {
             <span>
               {item} {!item.includes('Tutor Maju') && '+'}
             </span>
-          </div>
+          </Link>
         ))}
       </div>
 

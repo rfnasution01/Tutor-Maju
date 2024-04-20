@@ -19,7 +19,7 @@ export default function AppLayout() {
   }, [biodataData?.data])
 
   return (
-    <main className="scrollbar overflow-scrol grid h-full grid-cols-12">
+    <main className="scrollbar grid h-full grid-cols-12 overflow-scroll">
       <aside className="col-span-2 h-screen">
         <AsideNavigationApp />
       </aside>

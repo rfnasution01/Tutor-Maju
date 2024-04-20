@@ -12,6 +12,9 @@ export const LoginLayout = loadable(
 export const RegistrasiLayout = loadable(
   () => import('@/features/layout/registrasi-layout'),
 )
+export const NewsLayout = loadable(
+  () => import('@/features/layout/news-layout'),
+)
 
 // -----------------
 // ----- Pages -----

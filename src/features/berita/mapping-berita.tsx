@@ -1,5 +1,6 @@
 import { Button } from '@/components/Button'
 import { Pagination } from '@/components/Pagination'
+import { convertToSlug } from '@/libs/helpers/format-text'
 import TimeSinceUploaded from '@/libs/helpers/timeUploaded'
 import { useSearch } from '@/libs/hooks/useSearch'
 import { BeritaType } from '@/libs/interface'
@@ -7,8 +8,10 @@ import { getSearchSlice } from '@/store/reducer/stateSearch'
 import { useGetBeritaQuery } from '@/store/slices/beritaAPI'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 export function MappingBerita() {
+  const navigate = useNavigate()
   const { currentPage } = useSearch()
   const { find } = useSelector(getSearchSlice)
   const pageSize = 3
@@ -30,9 +33,14 @@ export function MappingBerita() {
   const totalPage = Math.ceil(berita?.length ?? 0 / pageSize)
 
   return (
-    <div className="grid h-full grid-rows-12 gap-y-32 ">
+    <div className="scrollbar flex max-h-screen flex-col gap-y-32 overflow-y-auto">
       {/* Main News */}
-      <div className="row-span-7 flex">
+      <div
+        className="flex hover:cursor-pointer"
+        onClick={() => {
+          navigate(`/news?page=dummy-text`)
+        }}
+      >
         <div className="flex flex-1 flex-col gap-y-24">
           {/* --- Best of --- */}
           <div className="flex">
@@ -70,9 +78,14 @@ export function MappingBerita() {
           <img src="/img/cosmic.png" alt="berita" className="w-[40rem]" />
         </div>
       </div>
-      <div className="row-span-5 flex flex-col gap-y-32">
+      <div className="flex flex-col gap-y-32">
         <div className="grid grid-cols-12 gap-x-32">
-          <div className="col-span-4 flex flex-col gap-y-24 hover:cursor-pointer">
+          <div
+            className="col-span-4 flex flex-col gap-y-24 hover:cursor-pointer"
+            onClick={() => {
+              navigate(`/news?page=dummy-text`)
+            }}
+          >
             {/* --- Tag --- */}
             <div className="flex items-center gap-x-24">
               <p>Blockchain News</p>
@@ -84,7 +97,12 @@ export function MappingBerita() {
               for ETH - Here's His Outlook
             </p>
           </div>
-          <div className="col-span-4 flex flex-col gap-y-24 hover:cursor-pointer">
+          <div
+            className="col-span-4 flex flex-col gap-y-24 hover:cursor-pointer"
+            onClick={() => {
+              navigate(`/news?page=dummy-text`)
+            }}
+          >
             {/* --- Tag --- */}
             <div className="flex items-center gap-x-24">
               <p>Blockchain News</p>
@@ -100,6 +118,9 @@ export function MappingBerita() {
             <div
               className="col-span-4 flex flex-col gap-y-24 hover:cursor-pointer"
               key={idx}
+              onClick={() => {
+                navigate(`/news?page=${convertToSlug(item?.seo)}`)
+              }}
             >
               {/* --- Tag --- */}
               <div className="flex items-center gap-x-24">

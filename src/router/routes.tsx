@@ -10,6 +10,7 @@ import {
   HomePage,
   LoginLayout,
   LoginPage,
+  NewsLayout,
   NotFoundPage,
   RegistrasiLayout,
   RegistrasiPage,
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
       {
         path: '',
         element: <HomePage />,
+      },
+      {
+        path: 'news',
+        element: <NewsLayout />,
       },
       {
         path: 'app',
