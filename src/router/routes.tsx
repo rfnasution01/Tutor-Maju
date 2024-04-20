@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import {
   ActivateAccountPage,
   AppLayout,
+  CBTApp,
   ComingSoonPage,
   CoursesApp,
   FileApp,
@@ -9,6 +10,7 @@ import {
   HomePage,
   LoginLayout,
   LoginPage,
+  NewsLayout,
   NotFoundPage,
   RegistrasiLayout,
   RegistrasiPage,
@@ -26,6 +28,10 @@ export const router = createBrowserRouter([
       {
         path: '',
         element: <HomePage />,
+      },
+      {
+        path: 'news',
+        element: <NewsLayout />,
       },
       {
         path: 'app',
@@ -49,6 +55,7 @@ export const router = createBrowserRouter([
           { path: 'forum', element: <ComingSoonPage /> },
           { path: 'file', element: <FileApp /> },
           { path: 'settings', element: <SettingApp /> },
+          { path: 'cbt', element: <CBTApp /> },
         ],
       },
       {

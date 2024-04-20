@@ -12,6 +12,9 @@ export const LoginLayout = loadable(
 export const RegistrasiLayout = loadable(
   () => import('@/features/layout/registrasi-layout'),
 )
+export const NewsLayout = loadable(
+  () => import('@/features/layout/news-layout'),
+)
 
 // -----------------
 // ----- Pages -----
@@ -26,6 +29,7 @@ export const CoursesApp = loadable(() => import('@/pages/app/courses'))
 export const TryOutApp = loadable(() => import('@/pages/app/tryout'))
 export const FileApp = loadable(() => import('@/pages/app/file'))
 export const SettingApp = loadable(() => import('@/pages/app/setting'))
+export const CBTApp = loadable(() => import('@/pages/app/cbt'))
 
 // ----- Login -----
 export const LoginPage = loadable(() => import('@/pages/login'))

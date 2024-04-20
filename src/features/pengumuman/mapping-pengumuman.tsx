@@ -1,3 +1,4 @@
+import { convertToSlug } from '@/libs/helpers/format-text'
 import TimeSinceUploaded from '@/libs/helpers/timeUploaded'
 import { useSearch } from '@/libs/hooks/useSearch'
 import { BeritaType } from '@/libs/interface'
@@ -6,8 +7,10 @@ import { useGetBeritaQuery } from '@/store/slices/beritaAPI'
 import { useGetPengumumanQuery } from '@/store/slices/pengumunanAPI'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 export function MappingPengumuman() {
+  const navigate = useNavigate()
   const { currentPage } = useSearch()
   const pageSize = 3
   const pageNumber = currentPage ?? 1
@@ -43,7 +46,12 @@ export function MappingPengumuman() {
   return (
     <div className="flex h-full flex-col gap-y-32">
       {/* Item  */}
-      <div className="flex flex-row items-center gap-x-32">
+      <div
+        className="flex flex-row items-center gap-x-32 hover:cursor-pointer"
+        onClick={() => {
+          navigate(`/news?page=dummy-text`)
+        }}
+      >
         <div className="flex-1">
           <div className="flex flex-col gap-y-16">
             {/* --- Tag --- */}
@@ -66,7 +74,13 @@ export function MappingPengumuman() {
       </div>
       {/* Item  */}
       {berita?.slice(0, 1).map((item, idx) => (
-        <div className="" key={idx}>
+        <div
+          className="hover:cursor-pointer"
+          key={idx}
+          onClick={() => {
+            navigate(`/news?page=${item?.seo}`)
+          }}
+        >
           <div className="flex flex-row items-center gap-x-32">
             <div className="flex-1">
               <div className="flex flex-col gap-y-16">
@@ -91,7 +105,13 @@ export function MappingPengumuman() {
       ))}
       {/* Item  */}
       {pengumuman?.slice(0, 1).map((item, idx) => (
-        <div className="" key={idx}>
+        <div
+          className="hover:cursor-pointer"
+          key={idx}
+          onClick={() => {
+            navigate(`/news?page=${convertToSlug(item.seo)}`)
+          }}
+        >
           <div className="flex flex-row items-center gap-x-32">
             <div className="flex-1">
               <div className="flex flex-col gap-y-16">

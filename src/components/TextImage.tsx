@@ -1,17 +1,25 @@
-import { useNavigate } from 'react-router-dom'
+import { ReactNode } from 'react'
 
-export function BestPengumuman({ height = 'h-[30rem]' }: { height?: string }) {
-  const navigate = useNavigate()
-
+export function TextImage({
+  height = 'h-[30rem]',
+  image = '/img/app-bg.jpg',
+  tag = 'Blockchain News',
+  time = '4 jam yang lalu',
+  title = `Top Analyst Unveils Catalyst That Could Trigger Nearly 50% Surge for
+  ETH - Here's His Outlook`,
+}: {
+  height?: string
+  image?: string
+  tag?: string
+  time?: string | ReactNode
+  title?: string
+}) {
   return (
     <div
       className={`relative col-span-4 rounded-2xl hover:cursor-pointer hover:shadow-2xl`}
-      onClick={() => {
-        navigate(`/news?page=dummy-text`)
-      }}
     >
       <img
-        src="/img/app-bg.jpg"
+        src={image}
         alt="bg"
         className={`${height} w-full rounded-lg object-cover`}
       />
@@ -19,14 +27,11 @@ export function BestPengumuman({ height = 'h-[30rem]' }: { height?: string }) {
         <div className="flex h-full flex-col justify-end gap-y-8 text-slate-200">
           {/* --- Tag --- */}
           <div className="flex items-center gap-x-24">
-            <p>Blockchain News</p>
-            <p className="italic text-slate-50">4 jam yang lalu</p>
+            <p>{tag}</p>
+            <div className="italic text-slate-50">{time}</div>
           </div>
           {/* --- Title --- */}
-          <p className="font-roboto text-[3rem]">
-            Top Analyst Unveils Catalyst That Could Trigger Nearly 50% Surge for
-            ETH - Here's His Outlook
-          </p>
+          <p className="font-roboto text-[3rem]">{title}</p>
         </div>
       </div>
     </div>

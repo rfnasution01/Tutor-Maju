@@ -1,5 +1,6 @@
 import {
   CircleGauge,
+  Computer,
   Folder,
   GraduationCap,
   LayoutDashboard,
@@ -19,6 +20,10 @@ export const DataNavigation = [
   {
     title: 'Try Out',
     icon: <CircleGauge size={18} />,
+  },
+  {
+    title: 'CBT',
+    icon: <Computer size={18} />,
   },
   {
     title: 'File',
