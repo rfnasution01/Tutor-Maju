@@ -47,7 +47,9 @@ export function MappingPengumuman() {
               <div className="flex flex-col gap-y-16">
                 {/* --- Tag --- */}
                 <div className="flex items-center gap-x-24">
-                  <p>{item?.kategori}</p>
+                  <p className="rounded-full bg-slate-100 px-24 py-12 text-[1.4rem]">
+                    {item?.kategori}
+                  </p>
                   <p className="italic text-slate-300">
                     <TimeSinceUploaded uploadTime={item?.tanggal} />
                   </p>

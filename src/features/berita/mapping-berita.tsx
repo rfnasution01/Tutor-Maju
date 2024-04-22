@@ -110,7 +110,7 @@ export function MappingBerita() {
         </div>
 
         <Pagination
-          totalPage={totalPage === 0 ? 1 : totalPage}
+          totalPage={totalPage === 0 ? 1 : Math.ceil(totalPage / pageSize)}
           classes="flex justify-end px-32 pb-32"
         />
       </div>

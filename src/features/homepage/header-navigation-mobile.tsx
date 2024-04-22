@@ -36,7 +36,7 @@ export function HeaderNavigationMobile() {
       </div>
 
       {token === undefined ? (
-        <div className="flex flex-col items-center justify-center gap-32">
+        <div className="flex  items-center justify-center gap-32">
           {['Login', 'Registrasi'].map((item, idx) => (
             <Link
               to={`/${item?.toLowerCase()}`}
