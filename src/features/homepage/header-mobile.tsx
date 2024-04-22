@@ -1,9 +1,10 @@
 import { DialogHelpers } from '@/components/ui/dialog'
-import { List } from 'lucide-react'
+import { AlignJustify } from 'lucide-react'
 import { useState } from 'react'
 import { HeaderNavigationMobile } from './header-navigation-mobile'
 import { LogoTitle } from '@/components/Logo'
 import { Search } from '@/components/Search'
+import { Link } from 'react-router-dom'
 
 export function HeaderMobile() {
   const [isShow, setIsShow] = useState<boolean>(false)
@@ -17,13 +18,16 @@ export function HeaderMobile() {
           setIsShow(true)
         }}
       >
-        <List size={24} />
+        <AlignJustify size={24} />
       </span>
       <DialogHelpers
         title={
-          <h3 className="flex h-[7.6rem] items-center bg-primary-shade-500 px-24 text-[3.2rem] text-secondary">
+          <Link
+            to="/"
+            className="flex h-[7.6rem] items-center bg-primary-shade-500 px-24 text-[3.2rem] text-secondary"
+          >
             Tutor<span className="text-primary-shade-200">Maju</span>
-          </h3>
+          </Link>
         }
         open={isShow}
         setOpen={setIsShow}

@@ -4,7 +4,7 @@ export default function ComingSoon() {
       <div className="flex flex-col items-center gap-y-32">
         <img src="/img/cosmos.png" alt="cosmos" className="w-[24rem]" />
         <h1
-          className="font-roboto text-[8rem] font-bold uppercase tracking-1.5"
+          className="text-center font-roboto text-[8rem] font-bold uppercase tracking-1.5"
           style={{
             background:
               '-webkit-linear-gradient(180deg, #FF0000, #0000FF, #00FF00)',

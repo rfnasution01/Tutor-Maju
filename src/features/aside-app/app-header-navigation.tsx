@@ -6,28 +6,38 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Dispatch, SetStateAction } from 'react'
 import { useDispatch } from 'react-redux'
 import { setStateSearch } from '@/store/reducer/stateSearch'
+import { usePathname } from '@/libs/hooks/usePathname'
 
-export function HeaderNavigationMobile({
+export function AppHeaderNavigationMobile({
   setIsShow,
 }: {
   setIsShow: Dispatch<SetStateAction<boolean>>
 }) {
   const dispatch = useDispatch()
+  const { secondPathname } = usePathname()
   const navigate = useNavigate()
   const token = Cookies.get('token')
-  const searchParams = new URLSearchParams(location.search)
-  const typeParams = searchParams.get('type')
 
   return (
     <div className="flex flex-col gap-y-48">
       <div className="flex flex-col gap-y-12 text-[2.4rem] text-black">
-        {['Berita Utama', 'Pengumuman'].map((item, idx) => (
+        {[
+          'Dashboard',
+          'Courses',
+          'Try Out',
+          'CBT',
+          'File',
+          'Forum',
+          'Settings',
+        ].map((item, idx) => (
           <Link
-            to={`/news?type=${convertToSlug(item)}`}
+            to={convertToSlug(item)}
             className={clsx(
-              'flex items-center justify-between gap-x-8 border-b border-slate-300 py-8 hover:cursor-pointer',
+              'flex items-center justify-between gap-x-8 border-b py-8 hover:cursor-pointer',
               {
-                'text-primary': item === convertSlugToText(typeParams),
+                'text-primary':
+                  item === convertSlugToText(secondPathname) ||
+                  (secondPathname === undefined && item === 'Dashboard'),
               },
             )}
             key={idx}

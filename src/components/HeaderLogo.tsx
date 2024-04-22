@@ -25,10 +25,10 @@ export function HeaderWithLogo({
         <img src={logo} alt="logo" className={`${logoClasses} w-[6rem]`} />
       )}
       {icon && iconPosition === 'before' && icon}
-      <h6 className="uppercase tracking-1.5">{title}</h6>
+      {title && <h6 className="uppercase tracking-1.5">{title}</h6>}
       {icon && iconPosition === 'after' && icon}
 
-      {addFunc}
+      {addFunc && addFunc}
     </div>
   )
 }

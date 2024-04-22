@@ -1,5 +1,5 @@
 import { MappingBerita } from '@/features/berita'
-import { HeaderMobile, HeaderNavigation } from '@/features/homepage'
+import { HeaderMobile, HeaderNavigation, Services } from '@/features/homepage'
 import { MappingPengumuman } from '@/features/pengumuman'
 import { useSearch } from '@/libs/hooks/useSearch'
 import { BeritaType } from '@/libs/interface'
@@ -39,15 +39,21 @@ export default function Home() {
       <div className="hidden phones:block">
         <HeaderMobile />
       </div>
-      <div className="scrollbar grid max-h-full flex-1 grid-cols-12 gap-32 overflow-y-auto px-32 py-32">
-        <div className="col-span-9 phones:order-last phones:col-span-12">
-          <MappingBerita
-            totalPage={totalPage === 0 ? 1 : Math.ceil(totalPage / pageSize)}
-            berita={berita}
-          />
+      <div className="scrollbar flex max-h-full flex-1 flex-col gap-y-32 overflow-y-auto p-32">
+        <div className="grid grid-cols-12 gap-32">
+          <div className="col-span-9 phones:order-last phones:col-span-12">
+            <MappingBerita
+              totalPage={totalPage === 0 ? 1 : Math.ceil(totalPage / pageSize)}
+              berita={berita}
+            />
+          </div>
+          <div className="col-span-3 phones:col-span-12">
+            <MappingPengumuman />
+          </div>
         </div>
-        <div className="col-span-3 phones:col-span-12">
-          <MappingPengumuman />
+        <div className="flex flex-col gap-y-32">
+          <p className="font-roboto text-[3rem]">Services</p>
+          <Services />
         </div>
       </div>
     </main>
