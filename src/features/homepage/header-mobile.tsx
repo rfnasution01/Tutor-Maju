@@ -1,27 +1,21 @@
 import { DialogHelpers } from '@/components/ui/dialog'
-import { Grid, List } from 'lucide-react'
+import { List } from 'lucide-react'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { HeaderNavigationMobile } from './header-navigation-mobile'
+import { LogoTitle } from '@/components/Logo'
 
 export function HeaderMobile() {
   const [isShow, setIsShow] = useState<boolean>(false)
 
   return (
-    <div className="flex items-center justify-between gap-x-32 bg-primary p-32 text-[2rem] text-white">
-      <Link
-        to="/"
-        className="flex items-center gap-x-8 rounded-full bg-primary-shade-200 px-24 py-8 hover:cursor-pointer hover:bg-transparent"
-      >
-        <Grid size={12} />
-        <span className="text-nowrap">Tutor Maju</span>
-      </Link>
+    <div className="flex items-center justify-between gap-x-32 p-32 text-[2rem] shadow-md  ">
+      <LogoTitle />
       <span
         onClick={() => {
           setIsShow(true)
         }}
       >
-        <List size={16} />
+        <List size={24} />
       </span>
       <DialogHelpers
         title={

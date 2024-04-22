@@ -1,3 +1,4 @@
+import { LogoTitle } from '@/components/Logo'
 import { convertToSlug } from '@/libs/helpers/format-text'
 import { setStateSearch } from '@/store/reducer/stateSearch'
 import clsx from 'clsx'
@@ -18,9 +19,10 @@ export function HeaderNavigation() {
     handleSearch(value)
   }
   return (
-    <div className="flex w-full items-center justify-between gap-x-80 bg-primary p-32 text-[2rem] text-white">
+    <div className="flex w-full items-center justify-between gap-x-80 bg-gradient-to-br from-purple-50 via-blue-50 to-orange-50 p-32 text-[2rem] text-black">
       <div className="flex items-center gap-x-32">
-        {['Tutor Maju', 'Berita Utama', 'Pengumuman'].map((item, idx) => (
+        <LogoTitle />
+        {['Berita Utama', 'Pengumuman'].map((item, idx) => (
           <Link
             to={
               item.includes('Tutor Maju')

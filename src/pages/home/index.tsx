@@ -4,7 +4,7 @@ import { MappingPengumuman } from '@/features/pengumuman'
 
 export default function Home() {
   return (
-    <main className="flex h-screen flex-col">
+    <main className="flex h-screen flex-col bg-gradient-to-br from-purple-50 via-blue-50 to-orange-50">
       <div className="block phones:hidden">
         <HeaderNavigation />
       </div>
