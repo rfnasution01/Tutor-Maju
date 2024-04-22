@@ -8,7 +8,7 @@ export function MappingCourses({ type }: { type: string }) {
       {DataLesson.filter((item) => item?.type.includes(type)).map(
         (item, idx) => (
           <div
-            className={`relative col-span-4 rounded-2xl hover:shadow-2xl`}
+            className={`relative col-span-4 rounded-2xl hover:shadow-2xl phones:col-span-12`}
             key={idx}
           >
             <img

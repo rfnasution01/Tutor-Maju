@@ -25,9 +25,9 @@ export function MappingCBT({ type }: { type: string }) {
           <HomeCBT />
         </div>
       ) : type?.includes('percobaan') ? (
-        <div className="col-span-12 flex flex-col gap-y-32">
+        <div className="col-span-12 flex flex-col gap-32">
           <PercobaanLangkah />
-          <div className="grid grid-cols-12 gap-x-32">
+          <div className="grid grid-cols-12 gap-32">
             <MappingPercobaan
               setUjianName={setUjianName}
               ujianName={ujianName}

@@ -1,16 +1,16 @@
 import clsx from 'clsx'
 import { useNavigate } from 'react-router-dom'
 
-export function UjianNavigation() {
+export function UjianNavigation({ length = 20 }: { length?: number }) {
   const searchParams = new URLSearchParams(location.search)
   const pageParams = searchParams.get('page') ?? 1
   const navigate = useNavigate()
 
   return (
-    <div className="flex flex-wrap items-center justify-center gap-y-16">
-      {Array.from({ length: 20 }, (_, index) => (
+    <div className="flex flex-wrap gap-y-16">
+      {Array.from({ length: length }, (_, index) => (
         <div
-          className="flex w-1/4 items-center justify-center gap-16 hover:cursor-pointer"
+          className="flex w-1/4 items-center justify-center gap-16 hover:cursor-pointer phones:w-1/12"
           key={index}
           onClick={() => {
             navigate(`/ujian?page=${index + 1}`)

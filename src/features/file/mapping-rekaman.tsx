@@ -6,7 +6,7 @@ export function MappingRekaman() {
     <>
       {DataRekaman.map((item, idx) => (
         <div
-          className={`relative col-span-4 rounded-2xl opacity-95 hover:opacity-100`}
+          className={`relative col-span-4 rounded-2xl opacity-95 hover:opacity-100 phones:col-span-12`}
           key={idx}
         >
           <img

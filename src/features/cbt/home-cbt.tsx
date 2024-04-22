@@ -8,7 +8,7 @@ export function HomeCBT() {
 
   return (
     <div className="grid grid-cols-12 gap-x-32">
-      <div className="col-span-4">
+      <div className="col-span-4 phones:col-span-6">
         <div className="flex flex-col rounded-2xl bg-white">
           <div
             className="bg-primary p-16 text-center text-white"

@@ -10,7 +10,9 @@ export function HeaderFile({
 }) {
   return (
     <div className="flex items-center justify-between">
-      <h1 className="text-[3rem] font-bold">File Manager</h1>
+      <h1 className="block text-[3rem] font-bold phones:hidden">
+        File Manager
+      </h1>
       <div className="flex items-center gap-x-16">
         {['Materi', 'Rekaman'].map((item, idx) => (
           <div

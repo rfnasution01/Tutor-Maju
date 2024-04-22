@@ -10,9 +10,11 @@ export function HeaderCBT({
 }) {
   return (
     <div className="flex items-center justify-between">
-      <h1 className="text-[3rem] font-bold">Computer Based Test</h1>
+      <h1 className="block text-[3rem] font-bold phones:hidden">
+        Computer Based Test
+      </h1>
       <div className="flex items-center gap-x-16">
-        {['Home', 'Account Setting', 'Pengumuman', 'Percobaan', 'Ujian'].map(
+        {['Home', 'Setting', 'Pengumuman', 'Percobaan', 'Ujian'].map(
           (item, idx) => (
             <div
               className={clsx(

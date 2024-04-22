@@ -1,4 +1,8 @@
-import { convertSlugToText, convertToSlug } from '@/libs/helpers/format-text'
+import {
+  capitalizeFirstLetterFromLowercase,
+  convertSlugToText,
+  convertToSlug,
+} from '@/libs/helpers/format-text'
 import clsx from 'clsx'
 import Cookies from 'js-cookie'
 import { ChevronDown } from 'lucide-react'
@@ -36,7 +40,8 @@ export function AppHeaderNavigationMobile({
               'flex items-center justify-between gap-x-8 border-b py-8 hover:cursor-pointer',
               {
                 'text-primary':
-                  item === convertSlugToText(secondPathname) ||
+                  capitalizeFirstLetterFromLowercase(item?.toLowerCase()) ===
+                    convertSlugToText(secondPathname) ||
                   (secondPathname === undefined && item === 'Dashboard'),
               },
             )}

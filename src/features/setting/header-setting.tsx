@@ -10,7 +10,7 @@ export function HeaderSetting({
 }) {
   return (
     <div className="flex items-center justify-between">
-      <h1 className="text-[3rem] font-bold">Settings</h1>
+      <h1 className="block text-[3rem] font-bold phones:hidden">Settings</h1>
       <div className="flex items-center gap-x-16">
         {['Pribadi', 'Sekolah'].map((item, idx) => (
           <div

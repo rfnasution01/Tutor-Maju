@@ -5,8 +5,12 @@ export function SettingSekolah() {
   const biodataSekolah = useSelector(getBiodataSekolahSlice)
 
   return (
-    <div className="col-span-6 flex items-center gap-x-16 rounded-2xl bg-white p-32">
-      <img src="/img/logo.png" alt="logo" className="w-[18rem]" />
+    <div className="col-span-6 flex items-center gap-x-16 rounded-2xl bg-white p-32 phones:col-span-12">
+      <img
+        src="/img/logo.png"
+        alt="logo"
+        className="w-[18rem] phones:w-[12rem]"
+      />
       <div className="flex flex-1 flex-col gap-y-8 text-[2rem]">
         <div className="flex w-full">
           <p className="w-3/12 ">NPSN</p>

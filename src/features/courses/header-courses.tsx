@@ -10,7 +10,7 @@ export function HeaderCourses({
 }) {
   return (
     <div className="flex items-center justify-between">
-      <h1 className="text-[3rem] font-bold">All Courses</h1>
+      <h1 className="block text-[3rem] font-bold phones:hidden">All Courses</h1>
       <div className="flex items-center gap-x-16">
         {['All', 'Ongoing', 'Favorite', 'Completed'].map((item, idx) => (
           <div
