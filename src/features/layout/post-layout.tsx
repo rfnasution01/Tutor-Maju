@@ -1,5 +1,5 @@
 import { HeaderMobile, HeaderNavigation } from '../homepage'
-import { NewsType } from '../news'
+import { PostDetail } from '../news'
 
 export default function NewsLayout() {
   return (
@@ -11,7 +11,7 @@ export default function NewsLayout() {
         <HeaderMobile />
       </div>
       <div className="scrollbar flex max-h-full flex-1 flex-col gap-y-32 overflow-y-auto px-32 py-32">
-        <NewsType />
+        <PostDetail />
       </div>
     </main>
   )

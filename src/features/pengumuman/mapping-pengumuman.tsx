@@ -36,10 +36,10 @@ export function MappingPengumuman() {
       {/* Item  */}
       {pengumuman?.slice(0, 1).map((item, idx) => (
         <div
-          className="border bg-white p-32 shadow-md hover:cursor-pointer"
+          className="transform-gpu border bg-white p-32 shadow-md transition-transform duration-300 hover:scale-105 hover:cursor-pointer"
           key={idx}
           onClick={() => {
-            navigate(`/news?page=${convertToSlug(item.seo)}`)
+            navigate(`/post?type=pengumuman&content=${convertToSlug(item.seo)}`)
           }}
         >
           <div className="flex flex-row items-center gap-x-32">
@@ -47,12 +47,12 @@ export function MappingPengumuman() {
               <div className="flex flex-col gap-y-16">
                 {/* --- Tag --- */}
                 <div className="flex items-center gap-x-24">
-                  <p className="rounded-full bg-primary-shade-200 px-32 py-12 text-[1.2rem] text-white">
+                  <p className="border-l-4 border-primary bg-primary-shade-200 bg-opacity-20 px-4 py-2">
                     {item?.kategori}
                   </p>
-                  <p className="italic text-slate-500">
+                  <div className="italic text-slate-500">
                     <TimeSinceUploaded uploadTime={item?.tanggal} />
-                  </p>
+                  </div>
                 </div>
                 {/* --- Title --- */}
                 <p className="font-roboto text-[2rem]">{item?.judul}</p>

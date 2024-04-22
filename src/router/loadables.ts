@@ -15,6 +15,9 @@ export const RegistrasiLayout = loadable(
 export const NewsLayout = loadable(
   () => import('@/features/layout/news-layout'),
 )
+export const PostLayout = loadable(
+  () => import('@/features/layout/post-layout'),
+)
 
 // -----------------
 // ----- Pages -----

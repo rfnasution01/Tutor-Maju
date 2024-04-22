@@ -1,4 +1,9 @@
-import { BeritaDetailParams, BeritaParams, BeritaType } from '@/libs/interface'
+import {
+  BeritaDetailParams,
+  BeritaDetailType,
+  BeritaParams,
+  BeritaType,
+} from '@/libs/interface'
 import { Res, api } from '../api'
 
 export const pengumumanEndpoints = api.injectEndpoints({
@@ -24,7 +29,10 @@ export const pengumumanEndpoints = api.injectEndpoints({
         },
       }),
     }),
-    getPengumumanDetail: builder.query<Res<BeritaType>, BeritaDetailParams>({
+    getPengumumanDetail: builder.query<
+      Res<BeritaDetailType[]>,
+      BeritaDetailParams
+    >({
       query: ({ seo }) => ({
         url: 'pengumuman/detail',
         params: {

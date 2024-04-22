@@ -12,6 +12,7 @@ import {
   LoginPage,
   NewsLayout,
   NotFoundPage,
+  PostLayout,
   RegistrasiLayout,
   RegistrasiPage,
   RootLayout,
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: 'news',
         element: <NewsLayout />,
+      },
+      {
+        path: 'post',
+        element: <PostLayout />,
       },
       {
         path: 'app',

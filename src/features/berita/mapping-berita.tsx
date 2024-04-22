@@ -1,4 +1,3 @@
-import { Button } from '@/components/Button'
 import { Pagination } from '@/components/Pagination'
 import { convertToSlug } from '@/libs/helpers/format-text'
 import TimeSinceUploaded from '@/libs/helpers/timeUploaded'
@@ -21,7 +20,7 @@ export function MappingBerita({
       <div
         className="flex rounded-2xl border bg-white p-32 shadow-md hover:cursor-pointer"
         onClick={() => {
-          navigate(`/news?page=dummy-text`)
+          navigate(`/`)
         }}
       >
         <div className="flex flex-1 flex-col gap-y-24">
@@ -48,13 +47,9 @@ export function MappingBerita({
           </div>
           {/* --- Read Article --- */}
           <div className="flex">
-            <Button
-              variant="solid"
-              rounded="rounded-xl"
-              bgColor="bg-primary-shade-200 bg-opacity-40"
-              textColor="text-white"
-              child={<div className="px-48">Read Article</div>}
-            />
+            <div className="rounded-lg border border-transparent bg-primary px-24 py-12 text-center text-[2rem] text-white hover:cursor-not-allowed">
+              Read Article
+            </div>
           </div>
         </div>
         <div className="flex flex-1 items-center justify-center">
@@ -66,20 +61,22 @@ export function MappingBerita({
         <div className="grid grid-cols-12 gap-32">
           {berita?.map((item, idx) => (
             <div
-              className="col-span-4 flex flex-col gap-y-24 border bg-white p-32 shadow-md hover:cursor-pointer phones:col-span-12"
+              className="col-span-4 flex transform-gpu flex-col gap-y-12 border bg-white p-32 shadow-md transition-transform duration-300 hover:scale-105 hover:cursor-pointer phones:col-span-12"
               key={idx}
               onClick={() => {
-                navigate(`/news?page=${convertToSlug(item?.seo)}`)
+                navigate(
+                  `/post?type=${item?.seo_kategori}&content=${convertToSlug(item?.seo)}`,
+                )
               }}
             >
               {/* --- Tag --- */}
               <div className="flex items-center gap-x-24">
-                <p className="rounded-full bg-primary-shade-200 px-32 py-12 text-[1.4rem] text-white">
+                <p className="border-l-4 border-primary bg-primary-shade-200 bg-opacity-20 px-4 py-2">
                   {item?.kategori}
                 </p>
-                <p className="italic text-slate-500">
+                <div className="italic text-slate-500">
                   <TimeSinceUploaded uploadTime={item?.tanggal} />
-                </p>
+                </div>
               </div>
               {/* --- Title --- */}
               <p className="font-roboto text-[3rem]">{item?.judul}</p>
