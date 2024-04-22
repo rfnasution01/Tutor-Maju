@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux'
 import { HeaderMobile, HeaderNavigation } from '../homepage'
 import { Eye, Timer } from 'lucide-react'
 import { useSearch } from '@/libs/hooks/useSearch'
+import { convertSlugToText } from '@/libs/helpers/format-text'
 
 export default function NewsLayout() {
   const { find } = useSelector(getSearchSlice)
@@ -35,7 +36,7 @@ export default function NewsLayout() {
     if (dataBerita?.data) {
       setBerita(dataBerita?.data)
     }
-  }, [dataBerita?.data])
+  }, [dataBerita?.data, find])
 
   const { data: dataPengumuman } = useGetPengumumanKategoriQuery(
     {
@@ -51,7 +52,7 @@ export default function NewsLayout() {
     if (dataPengumuman?.data) {
       setPengumuman(dataPengumuman?.data)
     }
-  }, [dataPengumuman?.data])
+  }, [dataPengumuman?.data, find])
 
   return (
     <main className="flex h-screen flex-col bg-gradient-to-br from-purple-50 via-blue-50 to-orange-50">
@@ -61,38 +62,40 @@ export default function NewsLayout() {
       <div className="hidden phones:block">
         <HeaderMobile />
       </div>
-      <div className="scrollbar grid max-h-full flex-1 grid-cols-12 gap-32 overflow-y-auto px-32 py-32">
-        {/* Kategori News  */}
-        <div className="col-span-9 phones:col-span-12">
-          <div className="grid grid-cols-12 gap-32">
-            {/* -- Item -- */}
-            {data?.map((item, idx) => (
-              <div
-                className="col-span-4 flex flex-col rounded-2xl border bg-white shadow-md hover:cursor-pointer phones:col-span-12"
-                key={idx}
-              >
-                <img
-                  src={item?.photo?.gambar ?? '/img/logo.png'}
-                  alt={item?.photo?.keterangan ?? 'logo'}
-                  className="h-[20rem] w-full"
-                />
-                <div className="flex flex-col gap-y-12 p-32">
-                  {/* --- Title --- */}
-                  <div className="flex flex-col gap-y-8">
-                    <p className="font-roboto text-[3rem]">{item?.judul}</p>
-                    <span
-                      className={`line-clamp-3 font-light`}
-                      dangerouslySetInnerHTML={{ __html: item?.isi }}
-                    />
+      <div className="scrollbar flex max-h-full flex-1 flex-col gap-y-32 overflow-y-auto px-32 py-32">
+        <p className="font-roboto text-[3rem]">
+          {convertSlugToText(typeParams)}
+        </p>
+        <div className="grid grid-cols-12 gap-32 ">
+          {/* -- Item -- */}
+          {data?.map((item, idx) => (
+            <div
+              className="col-span-3 flex flex-col rounded-2xl border bg-white shadow-md hover:cursor-pointer phones:col-span-6"
+              key={idx}
+            >
+              <img
+                src={item?.photo?.gambar ?? '/img/logo.png'}
+                alt={item?.photo?.keterangan ?? 'logo'}
+                className="h-[20rem] w-full"
+              />
+              <div className="flex flex-col gap-y-12 p-32">
+                {/* --- Title --- */}
+                <div className="flex flex-col gap-y-8">
+                  <p className="font-roboto text-[3rem]">{item?.judul}</p>
+                  <span
+                    className={`line-clamp-3 font-light`}
+                    dangerouslySetInnerHTML={{ __html: item?.isi }}
+                  />
+                </div>
+                {/* Hits  */}
+                <div className="flex items-center gap-x-24">
+                  <div className="flex items-center gap-x-4">
+                    <Timer size={14} />
+                    <p className="italic text-slate-500">
+                      <TimeSinceUploaded uploadTime={item?.tanggal} />
+                    </p>
                   </div>
-                  {/* Hits  */}
-                  <div className="flex items-center gap-x-24">
-                    <div className="flex items-center gap-x-4">
-                      <Timer size={14} />
-                      <p className="italic text-slate-500">
-                        <TimeSinceUploaded uploadTime={item?.tanggal} />
-                      </p>
-                    </div>
+                  <div className="block phones:hidden">
                     <div className="flex items-center gap-x-4">
                       <Eye size={14} />
                       <p className="italic text-slate-500">
@@ -102,8 +105,8 @@ export default function NewsLayout() {
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </main>
