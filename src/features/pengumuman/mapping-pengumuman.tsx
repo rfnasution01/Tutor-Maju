@@ -39,7 +39,9 @@ export function MappingPengumuman() {
           className="transform-gpu border bg-white p-32 shadow-md transition-transform duration-300 hover:scale-105 hover:cursor-pointer"
           key={idx}
           onClick={() => {
-            navigate(`/post?type=pengumuman&content=${convertToSlug(item.seo)}`)
+            navigate(
+              `/post?type=${item?.seo_kategori}&content=${convertToSlug(item.seo)}`,
+            )
           }}
         >
           <div className="flex flex-row items-center gap-x-32">
@@ -60,7 +62,7 @@ export function MappingPengumuman() {
             </div>
             <img
               src={item?.photo?.gambar ?? '/img/logo.png'}
-              alt="logo"
+              alt={item?.photo?.keterangan ?? 'logo'}
               className="h-[9rem] w-[9rem] rounded-2xl"
             />
           </div>
