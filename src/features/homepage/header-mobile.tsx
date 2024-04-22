@@ -3,6 +3,7 @@ import { List } from 'lucide-react'
 import { useState } from 'react'
 import { HeaderNavigationMobile } from './header-navigation-mobile'
 import { LogoTitle } from '@/components/Logo'
+import { Search } from '@/components/Search'
 
 export function HeaderMobile() {
   const [isShow, setIsShow] = useState<boolean>(false)
@@ -10,6 +11,7 @@ export function HeaderMobile() {
   return (
     <div className="flex items-center justify-between gap-x-32 p-32 text-[2rem] shadow-md  ">
       <LogoTitle />
+      <Search />
       <span
         onClick={() => {
           setIsShow(true)
@@ -26,7 +28,7 @@ export function HeaderMobile() {
         open={isShow}
         setOpen={setIsShow}
         noPadding
-        customComponent={<HeaderNavigationMobile />}
+        customComponent={<HeaderNavigationMobile setIsShow={setIsShow} />}
       />
     </div>
   )

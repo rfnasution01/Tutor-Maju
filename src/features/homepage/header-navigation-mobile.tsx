@@ -4,8 +4,13 @@ import clsx from 'clsx'
 import Cookies from 'js-cookie'
 import { Grid } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
+import { Dispatch, SetStateAction } from 'react'
 
-export function HeaderNavigationMobile() {
+export function HeaderNavigationMobile({
+  setIsShow,
+}: {
+  setIsShow: Dispatch<SetStateAction<boolean>>
+}) {
   const navigate = useNavigate()
   const token = Cookies.get('token')
 
@@ -28,6 +33,9 @@ export function HeaderNavigationMobile() {
               },
             )}
             key={idx}
+            onClick={() => {
+              setIsShow(false)
+            }}
           >
             {item.includes('Tutor Maju') && <Grid size={12} />}
             <span className="text-nowrap">{item}</span>

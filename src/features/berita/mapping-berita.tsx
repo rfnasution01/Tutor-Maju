@@ -2,37 +2,17 @@ import { Button } from '@/components/Button'
 import { Pagination } from '@/components/Pagination'
 import { convertToSlug } from '@/libs/helpers/format-text'
 import TimeSinceUploaded from '@/libs/helpers/timeUploaded'
-import { useSearch } from '@/libs/hooks/useSearch'
 import { BeritaType } from '@/libs/interface'
-import { getSearchSlice } from '@/store/reducer/stateSearch'
-import { useGetBeritaQuery } from '@/store/slices/beritaAPI'
-import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-export function MappingBerita() {
+export function MappingBerita({
+  berita,
+  totalPage,
+}: {
+  berita: BeritaType[]
+  totalPage: number
+}) {
   const navigate = useNavigate()
-  const { currentPage } = useSearch()
-  const { find } = useSelector(getSearchSlice)
-  const pageSize = 3
-  const pageNumber = currentPage ?? 1
-  const [berita, setBerita] = useState<BeritaType[]>()
-  const [totalPage, setTotalPage] = useState<number>(0)
-
-  const { data } = useGetBeritaQuery({
-    page_size: pageSize,
-    page_number: pageNumber,
-    search: find,
-  })
-
-  useEffect(() => {
-    if (data) {
-      setBerita(data?.data)
-    }
-    if (data?.meta) {
-      setTotalPage(data?.meta?.total)
-    }
-  }, [data?.data])
 
   return (
     <div className="scrollbar flex  flex-col gap-y-32 overflow-y-auto">
@@ -94,7 +74,9 @@ export function MappingBerita() {
             >
               {/* --- Tag --- */}
               <div className="flex items-center gap-x-24">
-                <p>{item?.kategori}</p>
+                <p className="rounded-full bg-primary-shade-200 px-32 py-12 text-[1.4rem] text-white">
+                  {item?.kategori}
+                </p>
                 <p className="italic text-slate-500">
                   <TimeSinceUploaded uploadTime={item?.tanggal} />
                 </p>
@@ -110,7 +92,7 @@ export function MappingBerita() {
         </div>
 
         <Pagination
-          totalPage={totalPage === 0 ? 1 : Math.ceil(totalPage / pageSize)}
+          totalPage={totalPage}
           classes="flex justify-end px-32 pb-32"
         />
       </div>
