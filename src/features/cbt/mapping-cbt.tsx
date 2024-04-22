@@ -1,12 +1,22 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { MappingPercobaan } from './mapping-percobaan'
 import { PercobaanDetail } from './percobaan-detail'
 import { PercobaanLangkah } from './percobaan-langkah'
 import ComingSoon from '@/pages/coming-soon'
 import { HomeCBT } from './home-cbt'
+import { useGetUjianQuery } from '@/store/slices/cbt'
+import { UjianType } from '@/libs/interface/cbtType'
 
 export function MappingCBT({ type }: { type: string }) {
-  const [ujian, setUjian] = useState<string>('ujian cpns')
+  const [ujianName, setUjianName] = useState<string>('')
+  const { data } = useGetUjianQuery()
+  const [ujian, setUjian] = useState<UjianType[]>([])
+
+  useEffect(() => {
+    if (data?.data) {
+      setUjian(data?.data)
+    }
+  }, [data?.data])
 
   return (
     <div className="grid grid-cols-12 gap-32">
@@ -18,8 +28,12 @@ export function MappingCBT({ type }: { type: string }) {
         <div className="col-span-12 flex flex-col gap-y-32">
           <PercobaanLangkah />
           <div className="grid grid-cols-12 gap-x-32">
-            <MappingPercobaan setUjian={setUjian} ujian={ujian} />
-            <PercobaanDetail ujian={ujian} />
+            <MappingPercobaan
+              setUjianName={setUjianName}
+              ujianName={ujianName}
+              ujian={ujian}
+            />
+            <PercobaanDetail ujianName={ujianName} ujian={ujian} />
           </div>
         </div>
       ) : (

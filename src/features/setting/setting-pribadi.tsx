@@ -6,7 +6,7 @@ export function SettingPribadi() {
   const biodataPribadi = useSelector(getBiodataPribadiSlice)
 
   return (
-    <div className="col-span-6 flex items-center gap-x-16 rounded-2xl bg-white p-32">
+    <div className="col-span-9 flex items-center gap-x-16 rounded-2xl bg-white p-32">
       <img src="/img/logo.png" alt="logo" className="w-[18rem]" />
       <div className="flex flex-1 flex-col gap-y-8 text-[2rem]">
         <div className="flex w-full">

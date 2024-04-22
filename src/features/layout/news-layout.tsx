@@ -1,4 +1,3 @@
-import { HeaderBerita } from '@/features/berita'
 import { HeaderPengumuman } from '@/features/pengumuman'
 import TimeSinceUploaded from '@/libs/helpers/timeUploaded'
 import { BeritaType } from '@/libs/interface'
@@ -57,7 +56,7 @@ export default function NewsLayout() {
   return (
     <main className="scrollbar flex h-full flex-col gap-x-32 overflow-scroll bg-gradient-to-br from-purple-50 via-blue-50 to-orange-50 px-32 pt-32">
       <div className="flex flex-row gap-x-32 rounded-2xl p-32">
-        <HeaderBerita />
+        {/* <HeaderBerita /> */}
         <div className="w-5/12">
           <HeaderPengumuman />
         </div>

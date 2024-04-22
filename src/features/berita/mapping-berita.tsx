@@ -17,6 +17,7 @@ export function MappingBerita() {
   const pageSize = 3
   const pageNumber = currentPage ?? 1
   const [berita, setBerita] = useState<BeritaType[]>()
+  const [totalPage, setTotalPage] = useState<number>(0)
 
   const { data } = useGetBeritaQuery({
     page_size: pageSize,
@@ -25,18 +26,20 @@ export function MappingBerita() {
   })
 
   useEffect(() => {
-    if (data?.data) {
+    if (data) {
       setBerita(data?.data)
+    }
+    if (data?.meta) {
+      setTotalPage(data?.meta?.total)
     }
   }, [data?.data])
 
-  const totalPage = Math.ceil(berita?.length ?? 0 / pageSize)
-
   return (
-    <div className="scrollbar flex max-h-screen flex-col gap-y-32 overflow-y-auto">
+    <div className="scrollbar flex  flex-col gap-y-32 overflow-y-auto">
+      <p className="font-roboto text-[3rem]">Headline News</p>
       {/* Main News */}
       <div
-        className="flex hover:cursor-pointer"
+        className="flex rounded-2xl border bg-white p-32 shadow-md hover:cursor-pointer"
         onClick={() => {
           navigate(`/news?page=dummy-text`)
         }}
@@ -79,44 +82,11 @@ export function MappingBerita() {
         </div>
       </div>
       <div className="flex flex-col gap-y-32">
-        <div className="grid grid-cols-12 gap-x-32">
-          <div
-            className="col-span-4 flex flex-col gap-y-24 hover:cursor-pointer"
-            onClick={() => {
-              navigate(`/news?page=dummy-text`)
-            }}
-          >
-            {/* --- Tag --- */}
-            <div className="flex items-center gap-x-24">
-              <p>Blockchain News</p>
-              <p className="italic text-slate-500">4 jam yang lalu</p>
-            </div>
-            {/* --- Title --- */}
-            <p className="font-roboto text-[3rem]">
-              Top Analyst Unveils Catalyst That Could Trigger Nearly 50% Surge
-              for ETH - Here's His Outlook
-            </p>
-          </div>
-          <div
-            className="col-span-4 flex flex-col gap-y-24 hover:cursor-pointer"
-            onClick={() => {
-              navigate(`/news?page=dummy-text`)
-            }}
-          >
-            {/* --- Tag --- */}
-            <div className="flex items-center gap-x-24">
-              <p>Blockchain News</p>
-              <p className="italic text-slate-500">12 jam yang lalu</p>
-            </div>
-            {/* --- Title --- */}
-            <p className="font-roboto text-[3rem]">
-              Over 65% of Crypto-Related Tweets and 85% of Conversations on Red
-              Markets
-            </p>
-          </div>
-          {berita?.slice(0, 1).map((item, idx) => (
+        <p className="font-roboto text-[3rem]">News</p>
+        <div className="grid grid-cols-12 gap-32">
+          {berita?.map((item, idx) => (
             <div
-              className="col-span-4 flex flex-col gap-y-24 hover:cursor-pointer"
+              className="col-span-4 flex flex-col gap-y-24 border bg-white p-32 shadow-md hover:cursor-pointer phones:col-span-12"
               key={idx}
               onClick={() => {
                 navigate(`/news?page=${convertToSlug(item?.seo)}`)
@@ -131,6 +101,10 @@ export function MappingBerita() {
               </div>
               {/* --- Title --- */}
               <p className="font-roboto text-[3rem]">{item?.judul}</p>
+              <span
+                className={`line-clamp-3 font-light`}
+                dangerouslySetInnerHTML={{ __html: item?.isi }}
+              />
             </div>
           ))}
         </div>

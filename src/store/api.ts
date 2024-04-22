@@ -5,6 +5,7 @@ export type Meta = {
   page?: number
   limit?: number
   count?: number
+  total?: number
 }
 
 export type Res<T, M = undefined> = {

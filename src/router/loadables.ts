@@ -19,7 +19,6 @@ export const NewsLayout = loadable(
 // -----------------
 // ----- Pages -----
 // -----------------
-
 export const HomePage = loadable(() => import('@/pages/home'))
 export const ComingSoonPage = loadable(() => import('@/pages/coming-soon'))
 export const NotFoundPage = loadable(() => import('@/pages/not-found'))
@@ -42,3 +41,6 @@ export const ForgotPasswordPage = loadable(
 
 // ----- Registrasi -----
 export const RegistrasiPage = loadable(() => import('@/pages/registrasi'))
+
+// ----- CBT ----
+export const UjianPage = loadable(() => import('@/pages/ujian'))

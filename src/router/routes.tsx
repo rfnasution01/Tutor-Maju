@@ -17,6 +17,7 @@ import {
   RootLayout,
   SettingApp,
   TryOutApp,
+  UjianPage,
 } from './loadables'
 import Cookies from 'js-cookie'
 
@@ -105,6 +106,10 @@ export const router = createBrowserRouter([
             element: <RegistrasiPage />,
           },
         ],
+      },
+      {
+        path: 'ujian',
+        element: <UjianPage />,
       },
     ],
   },
