@@ -39,13 +39,13 @@ export function StatistikNilai({
           </div>
           <div className="flex flex-col gap-y-8">
             <p className="font-bold">{item?.nama_ujian}</p>
-            <p className="text-[1.2rem] font-light text-slate-400">
+            <p className="text-[1.4rem] font-light text-slate-400">
               {item?.jumlah_soal ?? 120} Soal
             </p>
-            <p className="text-[1.2rem] font-light text-slate-400">
+            <p className="text-[1.4rem] font-light text-slate-400">
               {dayjs(item?.tanggal_mulai).format('DD MMMM YYYY')}
             </p>
-            <p className="text-[1.2rem] font-light text-slate-400">
+            <p className="text-[1.4rem] font-light text-slate-400">
               {dayjs(item?.tanggal_mulai).format('hh:mm')} -
               {dayjs(item?.tanggal_akhir).format('hh:mm')}
             </p>

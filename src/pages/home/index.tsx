@@ -14,7 +14,6 @@ export default function Home() {
   const pageSize = 3
   const pageNumber = currentPage ?? 1
   const [berita, setBerita] = useState<BeritaType[]>()
-  const [totalPage, setTotalPage] = useState<number>(0)
 
   const { data } = useGetBeritaQuery({
     page_size: pageSize,
@@ -25,9 +24,6 @@ export default function Home() {
   useEffect(() => {
     if (data) {
       setBerita(data?.data)
-    }
-    if (data?.meta) {
-      setTotalPage(data?.meta?.total)
     }
   }, [data?.data])
 
@@ -41,11 +37,8 @@ export default function Home() {
       </div>
       <div className="scrollbar flex max-h-full flex-1 flex-col gap-y-32 overflow-y-auto p-32">
         <div className="grid grid-cols-12 gap-32">
-          <div className="col-span-9 phones:order-last phones:col-span-12">
-            <MappingBerita
-              totalPage={totalPage === 0 ? 1 : Math.ceil(totalPage / pageSize)}
-              berita={berita}
-            />
+          <div className="col-span-9 phones:col-span-12">
+            <MappingBerita berita={berita} />
           </div>
           <div className="col-span-3 phones:col-span-12">
             <MappingPengumuman />

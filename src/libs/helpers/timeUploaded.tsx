@@ -13,21 +13,21 @@ const TimeSinceUploaded: React.FC<Props> = ({ uploadTime }) => {
     const timeDifference = currentTime.diff(uploadedTime, 'minute')
 
     if (timeDifference < 1) {
-      return 'Baru saja diunggah'
+      return 'Baru saja'
     } else if (timeDifference < 60) {
-      return `${timeDifference} menit yang lalu`
+      return `${timeDifference} menit`
     } else if (timeDifference < 24 * 60) {
       const hours = Math.floor(timeDifference / 60)
-      return `${hours} jam yang lalu`
+      return `${hours} jam`
     } else if (timeDifference < 7 * 24 * 60) {
       const days = Math.floor(timeDifference / (24 * 60))
-      return `${days} hari yang lalu`
+      return `${days} hari`
     } else if (timeDifference < 30 * 24 * 60) {
       const weeks = Math.floor(timeDifference / (7 * 24 * 60))
-      return `${weeks} minggu yang lalu`
+      return `${weeks} minggu`
     } else {
       const months = Math.floor(timeDifference / (30 * 24 * 60))
-      return `${months} bulan yang lalu`
+      return `${months} bulan`
     }
   }
 
