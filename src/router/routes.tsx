@@ -5,6 +5,7 @@ import {
   CBTApp,
   ComingSoonPage,
   CoursesApp,
+  ExamLayout,
   FileApp,
   ForgotPasswordPage,
   HomePage,
@@ -18,7 +19,6 @@ import {
   RootLayout,
   SettingApp,
   TryOutApp,
-  UjianPage,
 } from './loadables'
 import Cookies from 'js-cookie'
 
@@ -113,8 +113,8 @@ export const router = createBrowserRouter([
         ],
       },
       {
-        path: 'ujian',
-        element: <UjianPage />,
+        path: 'exam',
+        element: <ExamLayout />,
       },
     ],
   },

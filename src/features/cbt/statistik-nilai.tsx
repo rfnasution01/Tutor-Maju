@@ -54,7 +54,7 @@ export function StatistikNilai({
             <div
               className="rounded-lg border border-transparent bg-primary py-12 text-center text-[1.4rem] text-white hover:cursor-pointer hover:border-primary hover:bg-transparent hover:text-primary phones:text-[1.6rem]"
               onClick={() => {
-                navigate(`/ujian?soal=${item?.id_ujian}`)
+                navigate(`/exam?soal=${item?.id_ujian}`)
               }}
             >
               Kerjakan Soal

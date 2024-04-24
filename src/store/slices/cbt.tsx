@@ -14,7 +14,7 @@ export const cbtEndpoints = api.injectEndpoints({
     }),
     getSoalUjian: builder.query<Res<SoalUjianType[]>, SoalUjianParams>({
       query: ({ id_ujian }) => ({
-        url: 'soal',
+        url: 'ujian/soal',
         params: {
           id_ujian,
         },

@@ -1,2 +1,6 @@
 export * from './ujian-nav'
 export * from './ujian-page'
+export * from './soal-title'
+export * from './soal-content'
+export * from './ujian-soal'
+export * from './buttonGroup'

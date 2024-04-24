@@ -18,6 +18,9 @@ export const NewsLayout = loadable(
 export const PostLayout = loadable(
   () => import('@/features/layout/post-layout'),
 )
+export const ExamLayout = loadable(
+  () => import('@/features/layout/exam-layout'),
+)
 
 // -----------------
 // ----- Pages -----
@@ -46,4 +49,3 @@ export const ForgotPasswordPage = loadable(
 export const RegistrasiPage = loadable(() => import('@/pages/registrasi'))
 
 // ----- CBT ----
-export const UjianPage = loadable(() => import('@/pages/ujian'))

@@ -18,10 +18,20 @@ export type UjianType = {
   }[]
 }
 
-export type SoalUjianType = {
-  soal: string
-}
-
 export type SoalUjianParams = {
   id_ujian: string
+}
+
+export type SoalUjianType = {
+  number: string
+  id: string
+  question: string
+  type: string
+  options: SoalUjianOptionsType[]
+}
+
+export type SoalUjianOptionsType = {
+  id: string
+  label: string
+  value: string
 }
