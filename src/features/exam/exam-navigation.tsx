@@ -21,6 +21,10 @@ export function ExamNavigation({
     return false
   }
 
+  const smartlearningData = JSON.parse(
+    localStorage.getItem('smartlearning') || '{}',
+  )
+
   const handleSetNomorSoal = (nomor: number) => {
     navigate(`/exam?soal=${kodeSoal}&nomor=${nomor}`)
     setNoSoal(nomor)
@@ -31,9 +35,15 @@ export function ExamNavigation({
       {Array.from({ length: totalSoal }, (_, index) => (
         <div
           className={clsx(
-            'col-span-2 flex items-center justify-center rounded-lg p-12 text-[1.8rem] font-medium tracking-1.25 hover:cursor-pointer',
+            'col-span-2 flex items-center justify-center rounded-lg p-12 text-[1.8rem] font-medium tracking-1.25 hover:cursor-pointer hover:bg-blue-500 hover:text-white',
             {
-              'bg-blue-500 text-slate-50': isOpenNow(index + 1),
+              'bg-blue-500 text-slate-50':
+                isOpenNow(index + 1) && noSoal === index + 1,
+              'bg-emerald-500 text-slate-50': smartlearningData?.jawaban?.find(
+                (jawaban) =>
+                  jawaban?.no === index + 1 &&
+                  !(isOpenNow(index + 1) && noSoal === index + 1),
+              ),
             },
           )}
           key={index}
