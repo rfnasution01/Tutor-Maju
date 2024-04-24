@@ -55,15 +55,15 @@ export function ExamSoalButton({
         onClick={() => handleBookmark(noSoal)}
         className={clsx(
           'flex items-center justify-center gap-x-8 rounded-xl  px-32 py-12 text-white hover:cursor-pointer hover:bg-yellow-700 phones:w-full phones:py-8',
-          {
-            'bg-yellow-700':
-              bookmarks && bookmarks?.includes(noSoal.toString()),
-          },
-          {
-            'bg-yellow-500': !(
-              bookmarks && bookmarks?.includes(noSoal.toString())
-            ),
-          },
+          // {
+          //   'bg-yellow-700':
+          //     bookmarks && bookmarks?.includes(noSoal.toString()),
+          // },
+          // {
+          //   'bg-yellow-500': !(
+          //     bookmarks && bookmarks?.includes(noSoal.toString())
+          //   ),
+          // },
         )}
       >
         <span>
