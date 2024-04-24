@@ -25,7 +25,7 @@ export function ExamSoalButton({
         onClick={() => {
           handleButton(noSoal - 1)
         }}
-        className="flex items-center justify-center gap-x-8 rounded-xl bg-slate-500 px-32 py-8 text-white hover:cursor-pointer hover:bg-slate-700 phones:w-full"
+        className="flex items-center justify-center gap-x-8 rounded-xl bg-slate-500 px-32 py-12 text-white hover:cursor-pointer hover:bg-slate-700 phones:w-full phones:py-8"
       >
         <span>
           <ChevronsLeft size={16} />
@@ -38,7 +38,7 @@ export function ExamSoalButton({
         onClick={() => {
           handleButton(noSoal + 1)
         }}
-        className="flex items-center justify-center gap-x-8 rounded-xl bg-blue-500 px-32 py-8 text-white hover:cursor-pointer hover:bg-blue-700 phones:w-full"
+        className="flex items-center justify-center gap-x-8 rounded-xl bg-blue-500 px-32 py-12 text-white hover:cursor-pointer hover:bg-blue-700 phones:w-full phones:py-8"
       >
         <span>
           <ChevronsRight size={16} />
@@ -47,7 +47,7 @@ export function ExamSoalButton({
       </div>
 
       {/* -- Ragu Ragu -- */}
-      <div className="flex items-center justify-center gap-x-8 rounded-xl bg-yellow-500 px-32 py-8 text-white hover:cursor-pointer hover:bg-yellow-700 phones:w-full">
+      <div className="flex items-center justify-center gap-x-8 rounded-xl bg-yellow-500 px-32 py-12 text-white hover:cursor-pointer hover:bg-yellow-700 phones:w-full phones:py-8">
         <span>
           <Bookmark size={16} />
         </span>

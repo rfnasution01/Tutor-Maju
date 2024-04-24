@@ -34,6 +34,9 @@ export default function ExamLayout() {
   const typeSoalNow = dataSoal?.find(
     (item) => Number(item?.number) == noSoal,
   )?.type
+  const nomorSoalNow = dataSoal?.find(
+    (item) => Number(item?.number) == noSoal,
+  )?.number
 
   const { data } = useGetSoalUjianQuery(
     {
@@ -93,6 +96,8 @@ export default function ExamLayout() {
                     optionsSoal={jawabanNow}
                     typeSoal={typeSoalNow}
                     ukuranSoal={ukuranSoal}
+                    noSoal={Number(nomorSoalNow)}
+                    kodeSoal={kodeSoal}
                   />
                   <ExamSoalButton
                     noSoal={noSoal}
