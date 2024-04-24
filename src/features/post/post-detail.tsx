@@ -51,12 +51,12 @@ export function PostDetail() {
     <div className="grid grid-cols-12 gap-32">
       <PostContent
         data={
-          typeParams.includes('pengumuman') ? detailPengumuman : detailBerita
+          typeParams?.includes('pengumuman') ? detailPengumuman : detailBerita
         }
       />
       <PostRelated
         data={
-          typeParams.includes('pengumuman') ? pengumumanRelated : beritaRelated
+          typeParams?.includes('pengumuman') ? pengumumanRelated : beritaRelated
         }
       />
     </div>

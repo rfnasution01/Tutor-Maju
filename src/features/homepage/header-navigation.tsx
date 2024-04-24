@@ -27,7 +27,7 @@ export function HeaderNavigation() {
             )}
             key={idx}
           >
-            {item.includes('Tutor Maju') && <Grid size={12} />}
+            {item?.includes('Tutor Maju') && <Grid size={12} />}
             <span className="text-nowrap">{item}</span>
           </Link>
         ))}

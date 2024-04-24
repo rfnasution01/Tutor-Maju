@@ -82,9 +82,9 @@ export default function ExamLayout() {
               {isShowSoal && (
                 <div
                   className={clsx('flex flex-col gap-y-24 bg-white p-32', {
-                    'text-[2rem]': ukuranSoal.includes('sm'),
-                    'text-[2.4rem]': ukuranSoal.includes('md'),
-                    'text-[2.8rem]': ukuranSoal.includes('lg'),
+                    'text-[2rem]': ukuranSoal?.includes('sm'),
+                    'text-[2.4rem]': ukuranSoal?.includes('md'),
+                    'text-[2.8rem]': ukuranSoal?.includes('lg'),
                   })}
                   style={{
                     borderBottomLeftRadius: '1rem',

@@ -62,9 +62,9 @@ export function ExamSoalAnswer({
           <div className="">
             <div
               className={clsx('border-2 phones:rounded-full', {
-                'h-[1.6rem] w-[1.6rem]': ukuranSoal.includes('sm'),
-                'h-[2rem] w-[2rem]': ukuranSoal.includes('md'),
-                'h-[2.4rem] w-[2.4rem]': ukuranSoal.includes('lg'),
+                'h-[1.6rem] w-[1.6rem]': ukuranSoal?.includes('sm'),
+                'h-[2rem] w-[2rem]': ukuranSoal?.includes('md'),
+                'h-[2.4rem] w-[2.4rem]': ukuranSoal?.includes('lg'),
                 'border-transparent bg-white':
                   jawabanNoSoal && jawabanNoSoal?.jawab?.includes(item?.id),
               })}

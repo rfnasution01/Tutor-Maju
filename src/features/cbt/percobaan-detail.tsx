@@ -11,7 +11,7 @@ export function PercobaanDetail({
   return (
     <>
       {ujian
-        ?.filter((item) => item?.nama_ujian?.toLowerCase().includes(ujianName))
+        ?.filter((item) => item?.nama_ujian?.toLowerCase()?.includes(ujianName))
         ?.map((item, idx) => (
           <div
             className="col-span-6 block phones:col-span-12 phones:hidden"

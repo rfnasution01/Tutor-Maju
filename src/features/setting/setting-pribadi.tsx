@@ -27,7 +27,7 @@ export function SettingPribadi() {
           <p className="w-5/12 phones:w-4/12">Jenis Kelamin</p>
           <p className="w-1/12 text-center">:</p>
           <p className="w-6/12">
-            {biodataPribadi?.jk.includes('L') ? 'Laki-laki' : 'Perempuan'}
+            {biodataPribadi?.jk?.includes('L') ? 'Laki-laki' : 'Perempuan'}
           </p>
         </div>
         <div className="flex w-full">

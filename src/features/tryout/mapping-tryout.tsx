@@ -5,13 +5,13 @@ import { Timer, Users } from 'lucide-react'
 export function MappingTryOut({ type }: { type: string }) {
   return (
     <div className="grid grid-cols-12 gap-32">
-      {DataTryout.filter((item) => item?.type.includes(type)).map(
+      {DataTryout.filter((item) => item?.type?.includes(type)).map(
         (item, idx) => (
           <div
             className={clsx(
               `col-span-4 flex flex-col gap-y-24 rounded-2xl p-24 hover:cursor-pointer hover:shadow-lg phones:col-span-6`,
-              { 'bg-purple-200': item?.tag.includes('Sedang Berlangsung') },
-              { 'bg-white': !item?.tag.includes('Sedang Berlangsung') },
+              { 'bg-purple-200': item?.tag?.includes('Sedang Berlangsung') },
+              { 'bg-white': !item?.tag?.includes('Sedang Berlangsung') },
             )}
             key={idx}
           >
@@ -20,8 +20,8 @@ export function MappingTryOut({ type }: { type: string }) {
                 className={clsx(
                   'rounded-full px-16 py-8 text-[1.2rem] text-white',
                   {
-                    'bg-rose-500': item?.tag.includes('Sedang Berlangsung'),
-                    'bg-amber-500': !item?.tag.includes('Sedang Berlangsung'),
+                    'bg-rose-500': item?.tag?.includes('Sedang Berlangsung'),
+                    'bg-amber-500': !item?.tag?.includes('Sedang Berlangsung'),
                   },
                 )}
               >

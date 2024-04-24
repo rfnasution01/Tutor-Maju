@@ -12,7 +12,7 @@ export function HeaderTryOut({
   return (
     <div className="flex items-center justify-between">
       <h1 className="block text-[3rem] font-bold phones:hidden">
-        {type.toLowerCase().includes('percobaan')
+        {type?.toLowerCase().includes('percobaan')
           ? capitalizeFirstLetterFromLowercase(type)
           : 'All Try Out'}
       </h1>

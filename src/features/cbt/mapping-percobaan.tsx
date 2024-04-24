@@ -25,7 +25,7 @@ export function MappingPercobaan({
                 'flex items-center gap-x-24 border p-24 hover:cursor-pointer hover:shadow-md',
                 {
                   'border-transparent bg-purple-200 hover:shadow-none':
-                    item?.nama_ujian.toLowerCase().includes(ujianName),
+                    item?.nama_ujian?.toLowerCase()?.includes(ujianName),
                 },
               )}
             >
@@ -88,7 +88,7 @@ export function MappingPercobaan({
             </div>
             {ujianName !== '' && (
               <div className="hidden phones:block">
-                {item?.nama_ujian.toLowerCase().includes(ujianName) && (
+                {item?.nama_ujian?.toLowerCase()?.includes(ujianName) && (
                   <StatistikNilai item={item} isMobile />
                 )}
               </div>

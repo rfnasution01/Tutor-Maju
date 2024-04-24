@@ -51,9 +51,9 @@ export function SoalContent({
     <div className="flex h-full flex-col gap-y-32 p-32">
       <div
         className={clsx('', {
-          'text-[2rem]': ukuranFont.includes('sm'),
-          'text-[2.4rem]': ukuranFont.includes('md'),
-          'text-[2.8rem]': ukuranFont.includes('lg'),
+          'text-[2rem]': ukuranFont?.includes('sm'),
+          'text-[2.4rem]': ukuranFont?.includes('md'),
+          'text-[2.8rem]': ukuranFont?.includes('lg'),
         })}
       >
         {dataSoal

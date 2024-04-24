@@ -5,7 +5,7 @@ import { Bookmark, Play } from 'lucide-react'
 export function MappingCourses({ type }: { type: string }) {
   return (
     <div className="grid grid-cols-12 gap-32">
-      {DataLesson.filter((item) => item?.type.includes(type)).map(
+      {DataLesson.filter((item) => item?.type?.includes(type)).map(
         (item, idx) => (
           <div
             className={`relative col-span-4 rounded-2xl hover:shadow-2xl phones:col-span-12`}
@@ -28,16 +28,16 @@ export function MappingCourses({ type }: { type: string }) {
                             {
                               'bg-red-500': data
                                 ?.toLowerCase()
-                                .includes('bumn'),
+                                ?.includes('bumn'),
                               'bg-yellow-500': data
                                 ?.toLowerCase()
-                                .includes('cpns'),
+                                ?.includes('cpns'),
                               'bg-green-500': data
                                 ?.toLowerCase()
-                                .includes('kedinasan'),
+                                ?.includes('kedinasan'),
                               'bg-blue-500': data
                                 ?.toLowerCase()
-                                .includes('pppk'),
+                                ?.includes('pppk'),
                             },
                           )}
                           key={id}
