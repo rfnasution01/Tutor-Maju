@@ -1,3 +1,5 @@
+import { handleBookmark } from '@/libs/helpers/handleBookmark'
+import clsx from 'clsx'
 import { Bookmark, ChevronsLeft, ChevronsRight } from 'lucide-react'
 import { Dispatch, SetStateAction } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -17,6 +19,8 @@ export function ExamSoalButton({
     navigate(`/exam?soal=${kodeSoal}&nomor=${nomor}`)
     setNoSoal(nomor)
   }
+
+  const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '{}')
 
   return (
     <div className="flex items-center gap-32 text-[1.6rem] phones:flex-col phones:gap-16">
@@ -47,9 +51,22 @@ export function ExamSoalButton({
       </div>
 
       {/* -- Ragu Ragu -- */}
-      <div className="flex items-center justify-center gap-x-8 rounded-xl bg-yellow-500 px-32 py-12 text-white hover:cursor-pointer hover:bg-yellow-700 phones:w-full phones:py-8">
+      <div
+        onClick={() => handleBookmark(noSoal)}
+        className={clsx(
+          'flex items-center justify-center gap-x-8 rounded-xl  px-32 py-12 text-white hover:cursor-pointer hover:bg-yellow-700 phones:w-full phones:py-8',
+          { 'bg-yellow-700': bookmarks?.includes(noSoal.toString()) },
+          { 'bg-yellow-500': !bookmarks?.includes(noSoal.toString()) },
+        )}
+      >
         <span>
-          <Bookmark size={16} />
+          <Bookmark
+            size={16}
+            color={bookmarks?.includes(noSoal.toString()) ? 'yellow' : 'white'}
+            fill={
+              bookmarks?.includes(noSoal.toString()) ? 'yellow' : 'transparent'
+            }
+          />
         </span>
         <p>Ragu Ragu</p>
       </div>

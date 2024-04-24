@@ -25,6 +25,8 @@ export function ExamNavigation({
     localStorage.getItem('smartlearning') || '{}',
   )
 
+  const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '{}')
+
   const handleSetNomorSoal = (nomor: number) => {
     navigate(`/exam?soal=${kodeSoal}&nomor=${nomor}`)
     setNoSoal(nomor)
@@ -43,6 +45,9 @@ export function ExamNavigation({
                 (jawaban) =>
                   jawaban?.no === index + 1 &&
                   !(isOpenNow(index + 1) && noSoal === index + 1),
+              ),
+              'bg-yellow-500 text-slate-50': bookmarks?.includes(
+                (index + 1).toString(),
               ),
             },
           )}
