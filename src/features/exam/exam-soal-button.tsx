@@ -20,7 +20,7 @@ export function ExamSoalButton({
     setNoSoal(nomor)
   }
 
-  const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '{}')
+  // const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '{}')
 
   return (
     <div className="flex items-center gap-32 text-[1.6rem] phones:flex-col phones:gap-16">
@@ -69,10 +69,10 @@ export function ExamSoalButton({
         <span>
           <Bookmark
             size={16}
-            color={bookmarks?.includes(noSoal?.toString()) ? 'yellow' : 'white'}
-            fill={
-              bookmarks?.includes(noSoal?.toString()) ? 'yellow' : 'transparent'
-            }
+            // color={bookmarks?.includes(noSoal?.toString()) ? 'yellow' : 'white'}
+            // fill={
+            //   bookmarks?.includes(noSoal?.toString()) ? 'yellow' : 'transparent'
+            // }
           />
         </span>
         <p>Ragu Ragu</p>
