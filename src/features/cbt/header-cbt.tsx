@@ -22,9 +22,9 @@ export function HeaderCBT({
                 {
                   'border-primary text-primary': item
                     ?.toLowerCase()
-                    .includes(type),
+                    ?.includes(type),
                   'border-transparent hover:border-primary hover:text-primary':
-                    !item?.toLowerCase().includes(type),
+                    !item?.toLowerCase()?.includes(type),
                 },
               )}
               key={idx}

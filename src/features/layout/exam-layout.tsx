@@ -58,7 +58,7 @@ export default function ExamLayout() {
     <div className="scrollbar flex h-full max-h-screen flex-col overflow-y-auto bg-gradient-to-br from-purple-50 via-blue-50 to-orange-50">
       {/* --- HEader --- */}
       <ExamHeader />
-      <ExamProgress />
+      <ExamProgress totalSoal={dataSoal?.length} />
       <div className="scrollbar h-full flex-1 overflow-y-auto px-80 py-32 phones:px-32">
         <div className="scrollbar grid h-full grid-cols-12 gap-32 overflow-y-auto">
           {/* ---- Soal ---- */}

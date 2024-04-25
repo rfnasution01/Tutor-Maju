@@ -14,11 +14,11 @@ export function MappingTask() {
           >
             <span
               className={clsx('p-12 text-center', {
-                'text-fuchsia-700': item?.category.includes('course'),
-                'text-amber-700': !item?.category.includes('course'),
+                'text-fuchsia-700': item?.category?.includes('course'),
+                'text-amber-700': !item?.category?.includes('course'),
               })}
             >
-              {item?.category.includes('course') ? <BookOpen /> : <Medal />}
+              {item?.category?.includes('course') ? <BookOpen /> : <Medal />}
             </span>
             <div className="flex flex-1 flex-col gap-y-8">
               <h5 className="font-bold">{item?.title}</h5>
