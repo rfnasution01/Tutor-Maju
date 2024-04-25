@@ -13,6 +13,19 @@ export function StatistikNilai({
 }) {
   const navigate = useNavigate()
 
+  const handleStartExam = (item) => {
+    const startTime = new Date().toISOString()
+    const duration = item?.waktu_ujian
+
+    const dataToSave = {
+      startTime,
+      duration,
+    }
+
+    localStorage.setItem('mulaiujian', JSON.stringify(dataToSave))
+    navigate(`/exam?soal=${item?.id_ujian}`)
+  }
+
   return (
     <div
       className={clsx('flex flex-col gap-y-12', {
@@ -54,7 +67,7 @@ export function StatistikNilai({
             <div
               className="rounded-lg border border-transparent bg-primary py-12 text-center text-[1.4rem] text-white hover:cursor-pointer hover:border-primary hover:bg-transparent hover:text-primary phones:text-[1.6rem]"
               onClick={() => {
-                navigate(`/exam?soal=${item?.id_ujian}`)
+                handleStartExam(item)
               }}
             >
               Kerjakan Soal

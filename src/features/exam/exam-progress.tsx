@@ -1,3 +1,4 @@
+import CountdownTimer from '@/components/TimeCountDown'
 import { Timer } from 'lucide-react'
 
 export function ExamProgress({ totalSoal = 10 }: { totalSoal?: number }) {
@@ -5,7 +6,37 @@ export function ExamProgress({ totalSoal = 10 }: { totalSoal?: number }) {
     localStorage.getItem('smartlearning') || '{}',
   )
 
+  // const waktuMulai = JSON.parse(localStorage.getItem('mulaiujian') || '{}')
+  // const startTime = new Date(waktuMulai.startTime)
+  // const durasi = waktuMulai.duration
+
+  // const now = new Date()
+  // const elapsedMilliseconds = now - startTime
+  // const remainingMilliseconds = durasi * 60 * 1000 - elapsedMilliseconds
+  // const remainingTime = new Date(remainingMilliseconds)
+
+  // const sisaWaktu = {
+  //   hours: remainingTime.getUTCHours(),
+  //   minutes: remainingTime.getUTCMinutes(),
+  //   seconds: remainingTime.getUTCSeconds(),
+  // }
+
+  // console.log(now)
+
   const totalDijawab = smartlearningData?.jawaban?.length
+
+  function hitungSelisihMenit(waktuAwal, waktuAkhir) {
+    const selisihMilliseconds = waktuAkhir - waktuAwal
+    const selisihMenit = Math.floor(selisihMilliseconds / (1000 * 60))
+    return selisihMenit
+  }
+
+  const mulaiUjian = JSON.parse(localStorage.getItem('mulaiujian') || '{}')
+  const startTime = new Date(mulaiUjian.startTime)
+  const durasi = mulaiUjian.duration
+  const now = new Date()
+  const selisih = hitungSelisihMenit(startTime, now)
+  const sisaWaktuSoal = durasi - selisih
 
   return (
     <div className="flex flex-col gap-y-8 px-80 pt-32 text-[2rem] phones:px-32">
@@ -20,10 +51,7 @@ export function ExamProgress({ totalSoal = 10 }: { totalSoal?: number }) {
             <Timer />
           </span>
           <div className="flex items-center">
-            <p>
-              Waktu Tersisa :{' '}
-              <span className="text-[2rem] font-bold">01H:45m</span>
-            </p>
+            <CountdownTimer waktuUjian={sisaWaktuSoal} />
           </div>
         </div>
       </div>
