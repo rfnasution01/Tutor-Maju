@@ -103,6 +103,7 @@ export default function ExamLayout() {
                     noSoal={noSoal}
                     kodeSoal={kodeSoal}
                     setNoSoal={setNoSoal}
+                    totalSoal={dataSoal?.length}
                   />
                 </div>
               )}

@@ -8,10 +8,12 @@ export function ExamSoalButton({
   kodeSoal,
   setNoSoal,
   noSoal,
+  totalSoal,
 }: {
   kodeSoal: string
   setNoSoal: Dispatch<SetStateAction<number>>
   noSoal: number
+  totalSoal: number
 }) {
   const navigate = useNavigate()
 
@@ -21,16 +23,23 @@ export function ExamSoalButton({
   }
 
   const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]')
-  console.log(bookmarks)
 
   return (
     <div className="flex items-center gap-32 text-[1.6rem] phones:flex-col phones:gap-16">
       {/* -- Sebelumnya -- */}
       <div
         onClick={() => {
-          handleButton(noSoal - 1)
+          if (noSoal > 1) {
+            handleButton(noSoal - 1)
+          }
         }}
-        className="flex items-center justify-center gap-x-8 rounded-xl bg-slate-500 px-32 py-12 text-white hover:cursor-pointer hover:bg-slate-700 phones:w-full phones:py-8"
+        className={clsx(
+          'flex items-center justify-center gap-x-8 rounded-xl bg-slate-500 px-32 py-12 text-white  hover:bg-slate-700 phones:w-full phones:py-8',
+          {
+            'hover:cursor-not-allowed': !(noSoal > 1),
+            'hover:cursor-pointer': noSoal > 1,
+          },
+        )}
       >
         <span>
           <ChevronsLeft size={16} />
@@ -41,9 +50,17 @@ export function ExamSoalButton({
       {/* -- Selanjutya -- */}
       <div
         onClick={() => {
-          handleButton(noSoal + 1)
+          if (noSoal <= totalSoal - 1) {
+            handleButton(noSoal + 1)
+          }
         }}
-        className="flex items-center justify-center gap-x-8 rounded-xl bg-blue-500 px-32 py-12 text-white hover:cursor-pointer hover:bg-blue-700 phones:w-full phones:py-8"
+        className={clsx(
+          'flex items-center justify-center gap-x-8 rounded-xl bg-blue-500 px-32 py-12 text-white hover:bg-blue-700 phones:w-full phones:py-8',
+          {
+            'hover:cursor-pointer': noSoal <= totalSoal - 1,
+            'hover:cursor-not-allowed': !(noSoal <= totalSoal - 1),
+          },
+        )}
       >
         <span>
           <ChevronsRight size={16} />
