@@ -30,7 +30,7 @@ export function ExamSoalAnswer({
   // Fungsi untuk menangani penyimpanan jawaban
   const handleSaveAnswerAndUpdate = (item: SoalUjianOptionsType) => {
     // Panggil fungsi untuk menyimpan jawaban
-    handleSaveAnswer(item, kodeSoal, noSoal)
+    handleSaveAnswer(item, kodeSoal, noSoal, typeSoal)
 
     // Perbarui state jawaban
     const updatedJawaban = [...jawaban]
@@ -42,8 +42,6 @@ export function ExamSoalAnswer({
     }
     setJawaban(updatedJawaban)
   }
-
-  console.log(typeSoal)
 
   return (
     <div className="flex flex-col gap-y-12">
