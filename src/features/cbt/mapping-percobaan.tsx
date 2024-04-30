@@ -17,11 +17,14 @@ export function MappingPercobaan({
   setUjianName: Dispatch<SetStateAction<string>>
   ujian: UjianType[]
 }) {
-  const id_ujian = 'e804d101-58f3-40c4-9c9f-291147eed4bf'
+  const [idUjian, setIdUjian] = useState<string>()
   const [isReset, setIsReset] = useState<boolean>(false)
   const { data, isSuccess, isError, error } = useGetResetUjianQuery(
-    { id_ujian },
-    { skip: !isReset },
+    { id_ujian: idUjian },
+    {
+      skip:
+        !isReset || idUjian === null || idUjian === undefined || idUjian === '',
+    },
   )
 
   useEffect(() => {
@@ -109,7 +112,10 @@ export function MappingPercobaan({
                   child={
                     <div
                       className="flex items-center gap-x-12 text-[1.6rem]"
-                      onClick={() => setIsReset(true)}
+                      onClick={() => {
+                        setIsReset(true)
+                        setIdUjian(item?.id_ujian)
+                      }}
                     >
                       Reset
                       <span>
