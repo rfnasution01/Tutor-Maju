@@ -2,8 +2,11 @@ import { Button } from '@/components/Button'
 import { UjianType } from '@/libs/interface/cbtType'
 import clsx from 'clsx'
 import { List, Play, RefreshCcw, Timer } from 'lucide-react'
-import { Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { StatistikNilai } from './statistik-nilai'
+import { useGetResetUjianQuery } from '@/store/slices/cbtAPI'
+import { Bounce, ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export function MappingPercobaan({
   ujianName,
@@ -14,6 +17,53 @@ export function MappingPercobaan({
   setUjianName: Dispatch<SetStateAction<string>>
   ujian: UjianType[]
 }) {
+  const id_ujian = 'e804d101-58f3-40c4-9c9f-291147eed4bf'
+  const [isReset, setIsReset] = useState<boolean>(false)
+  const { data, isSuccess, isError, error } = useGetResetUjianQuery(
+    { id_ujian },
+    { skip: !isReset },
+  )
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success(`Ujian berhasil direset!`, {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+        transition: Bounce,
+      })
+    }
+  }, [isSuccess])
+
+  useEffect(() => {
+    if (isError) {
+      const errorMsg = error as {
+        data?: {
+          message?: string
+        }
+      }
+
+      toast.error(`${errorMsg?.data?.message ?? 'Terjadi Kesalahan'}`, {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+        transition: Bounce,
+      })
+    }
+  }, [isError, error])
+
+  console.log(data)
+
   return (
     <div className="col-span-6 flex flex-col gap-y-12 rounded-2xl bg-white p-24 phones:col-span-12">
       <p className="text-[2rem] font-semibold">Daptar Ujian Percobaan</p>
@@ -57,7 +107,10 @@ export function MappingPercobaan({
                   textColor="text-white"
                   rounded="rounded-xl"
                   child={
-                    <div className="flex items-center gap-x-12 text-[1.6rem]">
+                    <div
+                      className="flex items-center gap-x-12 text-[1.6rem]"
+                      onClick={() => setIsReset(true)}
+                    >
                       Reset
                       <span>
                         <RefreshCcw size={14} />
@@ -96,6 +149,7 @@ export function MappingPercobaan({
           </div>
         ))}
       </div>
+      <ToastContainer />
     </div>
   )
 }
