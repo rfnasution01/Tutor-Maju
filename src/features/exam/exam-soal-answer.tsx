@@ -9,12 +9,14 @@ export function ExamSoalAnswer({
   ukuranSoal,
   noSoal,
   kodeSoal,
+  idSoal,
 }: {
   optionsSoal: SoalUjianOptionsType[]
   typeSoal: string
   ukuranSoal: string
   noSoal: number
   kodeSoal: string
+  idSoal: string
 }) {
   // Mendapatkan data jawaban dari localStorage
   const smartlearningData = JSON.parse(
@@ -30,7 +32,7 @@ export function ExamSoalAnswer({
   // Fungsi untuk menangani penyimpanan jawaban
   const handleSaveAnswerAndUpdate = (item: SoalUjianOptionsType) => {
     // Panggil fungsi untuk menyimpan jawaban
-    handleSaveAnswer(item, kodeSoal, noSoal, typeSoal)
+    handleSaveAnswer(item, kodeSoal, noSoal, typeSoal, idSoal)
 
     // Perbarui state jawaban
     const updatedJawaban = [...jawaban]

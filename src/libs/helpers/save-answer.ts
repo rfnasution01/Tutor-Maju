@@ -1,10 +1,10 @@
-export const handleSaveAnswer = (item, kodeSoal, noSoal, typeSoal) => {
+export const handleSaveAnswer = (item, kodeUjian, noSoal, typeSoal, idSoal) => {
   const smartlearningData = localStorage.getItem('smartlearning')
   let newSmartlearningData
 
   if (!smartlearningData) {
     newSmartlearningData = {
-      idSoal: kodeSoal,
+      idSoal: kodeUjian,
       jawaban: [],
     }
   } else {
@@ -35,6 +35,7 @@ export const handleSaveAnswer = (item, kodeSoal, noSoal, typeSoal) => {
       // Jika jawaban untuk nomor soal tersebut belum ada, tambahkan jawaban baru beserta item
       newSmartlearningData.jawaban.push({
         no: noSoal,
+        idSoal: idSoal,
         jawab: [item.id],
       })
     }
@@ -45,6 +46,7 @@ export const handleSaveAnswer = (item, kodeSoal, noSoal, typeSoal) => {
     } else {
       newSmartlearningData.jawaban.push({
         no: noSoal,
+        idSoal: idSoal,
         jawab: item?.id,
       })
     }

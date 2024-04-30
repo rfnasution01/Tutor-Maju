@@ -1,37 +1,151 @@
-export const handleSaveAnswer = (item, kodeSoal, noSoal) => {
+export const handleSaveAnswer = (item, kodeUjian, noSoal, typeSoal, idSoal) => {
   const smartlearningData = localStorage.getItem('smartlearning')
+  let newSmartlearningData
+
   if (!smartlearningData) {
-    const newSmartlearningData = {
-      idSoal: kodeSoal,
-      jawaban: [
-        {
-          no: noSoal,
-          jawab: item?.id,
-        },
-      ],
+    newSmartlearningData = {
+      idSoal: kodeUjian,
+      jawaban: [],
     }
-    // Simpan objek baru ke localStorage smartlearning
-    localStorage.setItem('smartlearning', JSON.stringify(newSmartlearningData))
   } else {
-    // Jika localStorage smartlearning sudah ada, lakukan update
-    const parsedSmartlearningData = JSON.parse(smartlearningData)
-    const existingAnswerIndex = parsedSmartlearningData.jawaban.findIndex(
-      (answer: { no: number }) => answer.no === noSoal,
-    )
+    newSmartlearningData = JSON.parse(smartlearningData)
+  }
+
+  const existingAnswerIndex = newSmartlearningData.jawaban.findIndex(
+    (answer) => answer.no === noSoal,
+  )
+
+  if (typeSoal === 'MULTIPLE_ANSWER') {
     if (existingAnswerIndex !== -1) {
-      // Jika jawaban untuk nomor soal tersebut sudah ada, update jawaban
-      parsedSmartlearningData.jawaban[existingAnswerIndex].jawab = item?.id
+      // Jika jawaban untuk nomor soal tersebut sudah ada, cek apakah item sudah dipilih sebelumnya
+      const existingItemIndex = newSmartlearningData.jawaban[
+        existingAnswerIndex
+      ].jawab.indexOf(item.id)
+      if (existingItemIndex !== -1) {
+        // Jika item sudah ada dalam daftar, hapus item dari daftar
+        newSmartlearningData.jawaban[existingAnswerIndex].jawab.splice(
+          existingItemIndex,
+          1,
+        )
+      } else {
+        // Jika item belum ada dalam daftar, tambahkan item ke daftar
+        newSmartlearningData.jawaban[existingAnswerIndex].jawab.push(item.id)
+      }
     } else {
-      // Jika jawaban untuk nomor soal tersebut belum ada, tambahkan jawaban baru
-      parsedSmartlearningData.jawaban.push({
+      // Jika jawaban untuk nomor soal tersebut belum ada, tambahkan jawaban baru beserta item
+      newSmartlearningData.jawaban.push({
         no: noSoal,
+        idSoal: idSoal,
+        jawab: [item.id],
+      })
+    }
+  } else {
+    // Untuk jenis soal selain multiple, lakukan penanganan seperti sebelumnya
+    if (existingAnswerIndex !== -1) {
+      newSmartlearningData.jawaban[existingAnswerIndex].jawab = item?.id
+    } else {
+      newSmartlearningData.jawaban.push({
+        no: noSoal,
+        idSoal: idSoal,
         jawab: item?.id,
       })
     }
-    // Simpan kembali data yang telah diperbarui ke localStorage
-    localStorage.setItem(
-      'smartlearning',
-      JSON.stringify(parsedSmartlearningData),
-    )
   }
+
+  // Simpan kembali data yang telah diperbarui ke localStorage
+  localStorage.setItem('smartlearning', JSON.stringify(newSmartlearningData))
 }
+
+// export const handleSaveAnswer = (item, kodeSoal, noSoal, typeSoal) => {
+//   const smartlearningData = localStorage.getItem('smartlearning')
+//   let newSmartlearningData
+
+//   if (!smartlearningData) {
+//     newSmartlearningData = {
+//       idSoal: kodeSoal,
+//       jawaban: [],
+//     }
+//   } else {
+//     newSmartlearningData = JSON.parse(smartlearningData)
+//   }
+
+//   const existingAnswerIndex = newSmartlearningData.jawaban.findIndex(
+//     (answer) => answer.no === noSoal,
+//   )
+
+//   if (typeSoal === 'MULTIPLE_ANSWER') {
+//     if (existingAnswerIndex !== -1) {
+//       // Jika jawaban untuk nomor soal tersebut sudah ada, cek apakah item sudah dipilih sebelumnya
+//       const existingItemIndex = newSmartlearningData.jawaban[
+//         existingAnswerIndex
+//       ].jawab.indexOf(item.id)
+//       if (existingItemIndex !== -1) {
+//         // Jika item sudah ada dalam daftar, hapus item dari daftar
+//         newSmartlearningData.jawaban[existingAnswerIndex].jawab.splice(
+//           existingItemIndex,
+//           1,
+//         )
+//       } else {
+//         // Jika item belum ada dalam daftar, tambahkan item ke daftar
+//         newSmartlearningData.jawaban[existingAnswerIndex].jawab.push(item.id)
+//       }
+//     } else {
+//       // Jika jawaban untuk nomor soal tersebut belum ada, tambahkan jawaban baru beserta item
+//       newSmartlearningData.jawaban.push({
+//         no: noSoal,
+//         jawab: [item.id],
+//       })
+//     }
+//   } else {
+//     // Untuk jenis soal selain multiple, lakukan penanganan seperti sebelumnya
+//     if (existingAnswerIndex !== -1) {
+//       newSmartlearningData.jawaban[existingAnswerIndex].jawab = item?.id
+//     } else {
+//       newSmartlearningData.jawaban.push({
+//         no: noSoal,
+//         jawab: item?.id,
+//       })
+//     }
+//   }
+
+//   // Simpan kembali data yang telah diperbarui ke localStorage
+//   localStorage.setItem('smartlearning', JSON.stringify(newSmartlearningData))
+// }
+
+// export const handleSaveAnswer = (item, kodeSoal, noSoal) => {
+//   const smartlearningData = localStorage.getItem('smartlearning')
+//   if (!smartlearningData) {
+//     const newSmartlearningData = {
+//       idSoal: kodeSoal,
+//       jawaban: [
+//         {
+//           no: noSoal,
+//           jawab: item?.id,
+//         },
+//       ],
+//     }
+//     // Simpan objek baru ke localStorage smartlearning
+//     localStorage.setItem('smartlearning', JSON.stringify(newSmartlearningData))
+//   } else {
+//     // Jika localStorage smartlearning sudah ada, lakukan update
+//     const parsedSmartlearningData = JSON.parse(smartlearningData)
+//     const existingAnswerIndex = parsedSmartlearningData.jawaban.findIndex(
+//       (answer: { no: number }) => answer.no === noSoal,
+//     )
+//     if (existingAnswerIndex !== -1) {
+//       // Jika jawaban untuk nomor soal tersebut sudah ada, update jawaban
+//       parsedSmartlearningData.jawaban[existingAnswerIndex].jawab = item?.id
+//     } else {
+//       // Jika jawaban untuk nomor soal tersebut belum ada, tambahkan jawaban baru
+//       parsedSmartlearningData.jawaban.push({
+//         no: noSoal,
+//         jawab: item?.id,
+//       })
+//     }
+//     // Simpan kembali data yang telah diperbarui ke localStorage
+//     localStorage.setItem(
+//       'smartlearning',
+//       JSON.stringify(parsedSmartlearningData),
+//     )
+//   }
+// }
