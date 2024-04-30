@@ -1,5 +1,8 @@
 import { SoalUjianType } from '@/libs/interface'
-import { useGetSoalUjianQuery } from '@/store/slices/cbt'
+import {
+  useCreateSaveJawabanMutation,
+  useGetSoalUjianQuery,
+} from '@/store/slices/cbtAPI'
 import { useEffect, useState } from 'react'
 import {
   ExamHeader,
@@ -12,8 +15,14 @@ import {
   ExamSoalQuestion,
 } from '../exam'
 import clsx from 'clsx'
+import { konversiFormat } from '@/libs/helpers/convert-jawaban'
+import { Bounce, ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { useNavigate } from 'react-router-dom'
+import { Loader2 } from 'lucide-react'
 
 export default function ExamLayout() {
+  const navigate = useNavigate()
   const searchParams = new URLSearchParams(location.search)
   const soalParams = searchParams.get('soal')
   const kodeSoal = searchParams.get('soal')
@@ -28,6 +37,7 @@ export default function ExamLayout() {
   const soalNow = dataSoal?.find(
     (item) => Number(item?.number) == noSoal,
   )?.question
+  const idSoalNow = dataSoal?.find((item) => Number(item?.number) == noSoal)?.id
   const jawabanNow = dataSoal?.find(
     (item) => Number(item?.number) == noSoal,
   )?.options
@@ -53,6 +63,64 @@ export default function ExamLayout() {
       setDataSoal(data?.data)
     }
   }, [data?.data])
+
+  // ----- Submit -----
+  const [submitJawaban, { isLoading, isSuccess, isError, error }] =
+    useCreateSaveJawabanMutation()
+  const smartlearningData = JSON.parse(
+    localStorage.getItem('smartlearning') || '{}',
+  )
+
+  const handleSelesai = () => {
+    const data = konversiFormat(smartlearningData)
+
+    try {
+      submitJawaban({ data: data })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success(`Jawaban berhasil disimpan!`, {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+        transition: Bounce,
+      })
+      setTimeout(() => {
+        navigate('/app/cbt')
+      }, 3000)
+    }
+  }, [isSuccess])
+
+  useEffect(() => {
+    if (isError) {
+      const errorMsg = error as {
+        data?: {
+          message?: string
+        }
+      }
+
+      toast.error(`${errorMsg?.data?.message ?? 'Terjadi Kesalahan'}`, {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+        transition: Bounce,
+      })
+    }
+  }, [isError, error])
 
   return (
     <div className="scrollbar flex h-full max-h-screen flex-col overflow-y-auto bg-gradient-to-br from-purple-50 via-blue-50 to-orange-50">
@@ -98,6 +166,7 @@ export default function ExamLayout() {
                     ukuranSoal={ukuranSoal}
                     noSoal={Number(nomorSoalNow)}
                     kodeSoal={kodeSoal}
+                    idSoal={idSoalNow}
                   />
                   <ExamSoalButton
                     noSoal={noSoal}
@@ -145,9 +214,21 @@ export default function ExamLayout() {
                         />
                       </div>
                       {/* --- Selesai --- */}
-                      <div className="flex">
+                      <div
+                        className="flex"
+                        onClick={() => {
+                          if (!isLoading) {
+                            handleSelesai()
+                          }
+                        }}
+                      >
                         <div className="rounded-xl bg-emerald-500 px-32 py-16 font-bold uppercase tracking-1.5 text-white hover:cursor-pointer hover:bg-emerald-700">
-                          Selesai
+                          Selesai{' '}
+                          {isLoading && (
+                            <span className="animate-spin duration-200">
+                              <Loader2 size={16} />
+                            </span>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -173,49 +254,7 @@ export default function ExamLayout() {
           </div>
         </div>
       </div>
-      {/* <div className="mx-128 my-32 grid max-h-full grid-cols-12 gap-48 overflow-y-hidden phones:mx-32 phones:gap-32"> */}
-      {/* <div
-          className={clsx('phones:order-last phones:col-span-12', {
-            'col-span-9': isShow,
-            'col-span-10': !isShow,
-          })}
-        >
-          <ExamSoalLayout noSoal={noSoal} totalSoal={dataSoal?.length} />
-          <UjianSoal
-            pageNumber={pageNumber}
-            dataSoal={dataSoal}
-            setPageNumber={setPageNumber}
-            ujianId={soalParams}
-          />
-        </div> */}
-      {/* <div
-          className={clsx(
-            'scrollbar block overflow-y-auto bg-red-300 phones:col-span-12 phones:hidden',
-            { 'col-span-3': isShow, 'col-span-1': !isShow },
-          )}
-        > */}
-      {/* <ExamNavigation isShow={isShow} setIsShow={setIsShow} /> */}
-
-      {/* <div className="h-[100%] bg-blue-300">Tes</div> */}
-      {/* {isShow ? (
-            <UjianNavigation
-              length={dataSoal?.length}
-              idSoal={soalParams}
-              setPageNumber={setPageNumber}
-            />
-          ) : (
-            <div
-              className="h-full w-full bg-white"
-              style={{
-                writingMode: 'vertical-rl',
-                textOrientation: 'mixed',
-              }}
-            >
-              jawaban
-            </div>
-          )} */}
-      {/* </div> */}
-      {/* </div> */}
+      <ToastContainer />
     </div>
   )
 }

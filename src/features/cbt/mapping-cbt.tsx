@@ -4,7 +4,7 @@ import { PercobaanDetail } from './percobaan-detail'
 import { PercobaanLangkah } from './percobaan-langkah'
 import ComingSoon from '@/pages/coming-soon'
 import { HomeCBT } from './home-cbt'
-import { useGetUjianQuery } from '@/store/slices/cbt'
+import { useGetUjianQuery } from '@/store/slices/cbtAPI'
 import { UjianType } from '@/libs/interface/cbtType'
 
 export function MappingCBT({ type }: { type: string }) {

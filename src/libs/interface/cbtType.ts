@@ -35,3 +35,12 @@ export type SoalUjianOptionsType = {
   label: string
   value: string
 }
+
+export type SaveUjianParams = {
+  id_ujian: string
+  jawaban: JawabanType
+}
+
+export type JawabanType = {
+  [idPertanyaan: string]: string | string[]
+}
