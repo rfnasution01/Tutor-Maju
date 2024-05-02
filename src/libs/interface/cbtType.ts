@@ -10,6 +10,12 @@ export type UjianType = {
   peringkat: string | null
   total_peserta: string | null
   tag: string | null
+  status: number
+  dijawab: number
+  tidak_dijawab: number
+  benar: number
+  salah: number
+  status_lulus: null | boolean
   nilai: {
     title: string
     skor: number
@@ -43,4 +49,35 @@ export type SaveUjianParams = {
 
 export type JawabanType = {
   [idPertanyaan: string]: string | string[]
+}
+
+export type StatistikType = {
+  id_kategori: string
+  nama_kategori: string
+  jumlah_soal: number
+  dijawab: number
+  tidak_dijawab: number
+  benar: number
+  salah: number
+}
+
+export type PilihanType = {
+  id: string
+  pilihan: string
+  umpan_balik: string
+  skor: number
+  urutan: number
+}
+
+export type PembahasanType = {
+  id: string
+  urutan: number
+  id_kategori: string
+  nama_kategori: string
+  pertanyaan: string
+  pembahasan: string
+  type: string
+  pilihan: string
+  jawaban: string[] | null
+  status: string | null
 }

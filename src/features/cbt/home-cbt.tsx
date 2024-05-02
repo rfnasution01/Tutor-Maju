@@ -22,8 +22,7 @@ export function HomeCBT() {
           <div className="flex flex-col gap-y-12 p-12">
             <p>{biodataPribadi?.nama ?? 'John'}</p>
             <p>{biodataSekolah?.nama ?? 'Akademi Ninja Konoha'}</p>
-            <p>Kabupaten Tapanuli Utara</p>
-            <p>Provinsi Sumatera Utara</p>
+            <p>{biodataSekolah?.wilayah}</p>
           </div>
           <div
             className="cursor-not-allowed bg-primary-shade-200 p-16 text-center text-white"

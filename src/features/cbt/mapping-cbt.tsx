@@ -24,7 +24,7 @@ export function MappingCBT({ type }: { type: string }) {
         <div className="col-span-12">
           <HomeCBT />
         </div>
-      ) : type?.includes('percobaan') ? (
+      ) : type?.includes('ujian') ? (
         <div className="col-span-12 flex flex-col gap-32">
           <PercobaanLangkah />
           <div className="grid grid-cols-12 gap-32">

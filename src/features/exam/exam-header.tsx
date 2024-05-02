@@ -1,16 +1,23 @@
 import { LogoTitle } from '@/components/Logo'
 import Time from '@/components/Time'
 import { UjianType } from '@/libs/interface'
-import { getBiodataPribadiSlice } from '@/store/reducer/statePribadi'
+import { BiodataPribadiType } from '@/libs/interface/biodataType'
+import { useGetBiodataQuery } from '@/store/slices/biodataAPI'
 import { useGetUjianQuery } from '@/store/slices/cbtAPI'
 import { User } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 export function ExamHeader() {
   const navigate = useNavigate()
-  const biodataPribadi = useSelector(getBiodataPribadiSlice)
+  const [biodataPribadi, setBiodataPribadi] = useState<BiodataPribadiType>()
+  const { data: biodataData } = useGetBiodataQuery()
+
+  useEffect(() => {
+    if (biodataData?.data) {
+      setBiodataPribadi(biodataData?.data?.pribadi)
+    }
+  }, [biodataData?.data])
   const searchParams = new URLSearchParams(location.search)
   const soalParams = searchParams.get('soal') ?? null
 
