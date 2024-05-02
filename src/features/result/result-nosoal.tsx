@@ -84,13 +84,20 @@ export function ResultNoSoal({
             'col-span-2 flex items-center justify-center rounded-lg p-12 text-[1.8rem] font-medium tracking-1.25 hover:cursor-pointer hover:bg-blue-500 hover:text-white',
             {
               'bg-blue-500 text-slate-50':
-                isOpenNow(index + 1) && noSoal === index + 1,
+                isOpenNow(index + 1) &&
+                noSoal === index + 1 &&
+                (checkPositiveScoreSelectedAnswer(index + 1) === true ||
+                  checkPositiveScoreSelectedAnswer(index + 1) === false ||
+                  checkPositiveScoreSelectedAnswer(index + 1) === undefined),
               'bg-emerald-500 text-slate-50':
-                checkPositiveScoreSelectedAnswer(index + 1) === true,
+                checkPositiveScoreSelectedAnswer(index + 1) === true &&
+                !isOpenNow(index + 1),
               'bg-red-500 text-slate-50':
-                checkPositiveScoreSelectedAnswer(index + 1) === false,
+                checkPositiveScoreSelectedAnswer(index + 1) === false &&
+                !isOpenNow(index + 1),
               'bg-slate-500 text-slate-50':
-                checkPositiveScoreSelectedAnswer(index + 1) === undefined,
+                checkPositiveScoreSelectedAnswer(index + 1) === undefined &&
+                !isOpenNow(index + 1),
             },
           )}
           key={index}
