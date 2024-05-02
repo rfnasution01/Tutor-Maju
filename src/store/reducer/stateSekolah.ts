@@ -5,6 +5,7 @@ const initialState: BiodataSekolahType = {
   id: '0000000001',
   npsn: '00001',
   nama: 'Akademi Ninja Konoha',
+  wilayah: 'KAB. TAPANULI UTARA',
 }
 
 const stateBiodataSekolahSlice = createSlice({

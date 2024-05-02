@@ -1,7 +1,9 @@
 import {
+  PembahasanType,
   SaveUjianParams,
   SoalUjianParams,
   SoalUjianType,
+  StatistikType,
   UjianType,
 } from '@/libs/interface/cbtType'
 import { Res, api } from '../api'
@@ -38,6 +40,22 @@ export const cbtEndpoints = api.injectEndpoints({
         },
       }),
     }),
+    getStatistikUjian: builder.query<Res<StatistikType[]>, SoalUjianParams>({
+      query: ({ id_ujian }) => ({
+        url: 'ujian/statistik',
+        params: {
+          id_ujian,
+        },
+      }),
+    }),
+    getPembahasanUjian: builder.query<Res<PembahasanType[]>, SoalUjianParams>({
+      query: ({ id_ujian }) => ({
+        url: 'ujian/pembahasan',
+        params: {
+          id_ujian,
+        },
+      }),
+    }),
   }),
 })
 
@@ -46,4 +64,6 @@ export const {
   useGetSoalUjianQuery,
   useGetResetUjianQuery,
   useCreateSaveJawabanMutation,
+  useGetPembahasanUjianQuery,
+  useGetStatistikUjianQuery,
 } = cbtEndpoints

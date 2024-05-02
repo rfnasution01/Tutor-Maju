@@ -21,7 +21,9 @@ export const PostLayout = loadable(
 export const ExamLayout = loadable(
   () => import('@/features/layout/exam-layout'),
 )
-
+export const ResultLayout = loadable(
+  () => import('@/features/layout/result-layout'),
+)
 // -----------------
 // ----- Pages -----
 // -----------------

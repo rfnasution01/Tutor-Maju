@@ -1,4 +1,5 @@
 import CountdownTimer from '@/components/TimeCountDown'
+import { hitungSelisihMenit } from '@/libs/helpers/formatTime'
 import { Timer } from 'lucide-react'
 
 export function ExamProgress({ totalSoal = 10 }: { totalSoal?: number }) {
@@ -6,30 +7,7 @@ export function ExamProgress({ totalSoal = 10 }: { totalSoal?: number }) {
     localStorage.getItem('smartlearning') || '{}',
   )
 
-  // const waktuMulai = JSON.parse(localStorage.getItem('mulaiujian') || '{}')
-  // const startTime = new Date(waktuMulai.startTime)
-  // const durasi = waktuMulai.duration
-
-  // const now = new Date()
-  // const elapsedMilliseconds = now - startTime
-  // const remainingMilliseconds = durasi * 60 * 1000 - elapsedMilliseconds
-  // const remainingTime = new Date(remainingMilliseconds)
-
-  // const sisaWaktu = {
-  //   hours: remainingTime.getUTCHours(),
-  //   minutes: remainingTime.getUTCMinutes(),
-  //   seconds: remainingTime.getUTCSeconds(),
-  // }
-
-  // console.log(now)
-
   const totalDijawab = smartlearningData?.jawaban?.length
-
-  function hitungSelisihMenit(waktuAwal, waktuAkhir) {
-    const selisihMilliseconds = waktuAkhir - waktuAwal
-    const selisihMenit = Math.floor(selisihMilliseconds / (1000 * 60))
-    return selisihMenit
-  }
 
   const mulaiUjian = JSON.parse(localStorage.getItem('mulaiujian') || '{}')
   const startTime = new Date(mulaiUjian.startTime)

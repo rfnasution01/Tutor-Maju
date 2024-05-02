@@ -94,6 +94,9 @@ export default function ExamLayout() {
         theme: 'light',
         transition: Bounce,
       })
+      localStorage.removeItem('smartlearning')
+      localStorage.removeItem('mulaiujian')
+      localStorage.removeItem('bookmarks')
       setTimeout(() => {
         navigate('/app/cbt')
       }, 3000)

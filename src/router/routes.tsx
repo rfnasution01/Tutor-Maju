@@ -16,6 +16,7 @@ import {
   PostLayout,
   RegistrasiLayout,
   RegistrasiPage,
+  ResultLayout,
   RootLayout,
   SettingApp,
   TryOutApp,
@@ -116,6 +117,7 @@ export const router = createBrowserRouter([
         path: 'exam',
         element: <ExamLayout />,
       },
+      { path: 'result', element: <ResultLayout /> },
     ],
   },
   {
