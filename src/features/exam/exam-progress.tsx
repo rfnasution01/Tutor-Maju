@@ -21,7 +21,7 @@ export function ExamProgress({ totalSoal = 10 }: { totalSoal?: number }) {
       {/* --- Text --- */}
       <div className="flex items-center justify-between gap-x-32">
         <p>
-          Dijawab <span className="text-primary">{totalDijawab}</span>/
+          Dijawab <span className="text-primary">{totalDijawab ?? 0}</span>/
           {totalSoal}
         </p>
         <div className="flex items-center gap-x-8">

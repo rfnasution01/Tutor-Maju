@@ -78,6 +78,6 @@ export type PembahasanType = {
   pembahasan: string
   type: string
   pilihan: string
-  jawaban: string[] | null
+  jawaban: string[] | null | string
   status: string | null
 }

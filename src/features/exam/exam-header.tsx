@@ -32,7 +32,7 @@ export function ExamHeader() {
 
   return (
     <div className="flex flex-row items-center justify-between bg-gradient-to-br from-purple-50 via-blue-50 to-orange-50 px-32 py-12">
-      <LogoTitle />
+      <LogoTitle to="/app/cbt" />
       <p className="block font-roboto text-[2.8rem] uppercase phones:hidden">
         {ujian?.find((item) => item?.id_ujian === soalParams)?.nama_ujian}
       </p>
