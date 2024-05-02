@@ -17,9 +17,14 @@ export function ResultPembahasanAnswer({
 
   const pilihan = JSON.parse(pilihanNow)
 
+  const typeNow = data?.find((item) => Number(item?.urutan) == noSoal)?.type
+
   const jawabanNow = data?.find(
     (item) => Number(item?.urutan) == noSoal,
   )?.jawaban
+
+  // Periksa apakah jawabanNow adalah array
+  const isMultipleAnswer = Array.isArray(jawabanNow)
 
   return (
     <div className="flex flex-col gap-y-12">
@@ -37,6 +42,22 @@ export function ResultPembahasanAnswer({
                 'border-transparent bg-red-500 text-white hover:bg-emerald-700':
                   item?.id?.includes(jawabanNow) && Number(item?.skor) <= 0,
               },
+              {
+                'border-transparent bg-emerald-500 text-white hover:bg-emerald-700':
+                  typeNow === 'MULTIPLE_ANSWER' &&
+                  isMultipleAnswer &&
+                  jawabanNow?.some(
+                    (list) => list === item?.id && item?.skor > 0,
+                  ),
+              },
+              {
+                'border-transparent bg-red-500 text-white hover:bg-emerald-700':
+                  typeNow === 'MULTIPLE_ANSWER' &&
+                  isMultipleAnswer &&
+                  jawabanNow?.some(
+                    (list) => list === item?.id && item?.skor <= 0,
+                  ),
+              },
             )}
             key={idx}
           >
@@ -52,10 +73,22 @@ export function ResultPembahasanAnswer({
                       !item?.id?.includes(jawabanNow) && Number(item.skor) <= 0,
                     'bg-green-500 text-white':
                       !item?.id?.includes(jawabanNow) && Number(item.skor) > 0,
-                    'bg-white text-red-500':
-                      item?.id?.includes(jawabanNow) && Number(item?.skor) <= 0,
+                    'bg-white text-blue-500':
+                      (item?.id?.includes(jawabanNow) &&
+                        Number(item?.skor) <= 0) ||
+                      (typeNow === 'MULTIPLE_ANSWER' &&
+                        isMultipleAnswer &&
+                        jawabanNow?.some(
+                          (list) => list === item?.id && item?.skor <= 0,
+                        )),
                     'bg-white text-green-500':
-                      item?.id?.includes(jawabanNow) && Number(item?.skor) > 0,
+                      (item?.id?.includes(jawabanNow) &&
+                        Number(item?.skor) <= 0) ||
+                      (typeNow === 'MULTIPLE_ANSWER' &&
+                        isMultipleAnswer &&
+                        jawabanNow?.some(
+                          (list) => list === item?.id && item?.skor > 0,
+                        )),
                   },
                 )}
               >

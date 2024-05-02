@@ -38,6 +38,8 @@ export function ResultNoSoal({
   }
 
   function checkPositiveScoreSelectedAnswer(index) {
+    const typeNow = data?.find((item) => Number(item?.urutan) === index)?.type
+
     const pilihanNow = data?.find(
       (item) => Number(item?.urutan) === index,
     )?.pilihan
@@ -45,9 +47,24 @@ export function ResultNoSoal({
     const jawabanNow = data?.find(
       (item) => Number(item?.urutan) === index,
     )?.jawaban
+
+    const isMultipleAnswer = Array.isArray(jawabanNow)
+    let skor = 0
     // Parse pilihan menjadi objek array
     const pilihanData = pilihanNow && JSON.parse(pilihanNow)
-    const skor = pilihanData?.find((item) => item?.id === jawabanNow)?.skor
+    if (isMultipleAnswer && typeNow === 'MULTIPLE_ANSWER') {
+      // Jika jawabanNow adalah array, iterasi melalui setiap jawaban
+      jawabanNow.forEach((jawabanId) => {
+        // Temukan objek pilihan yang sesuai dengan id jawaban
+        const pilihanJawaban = pilihanData.find((item) => item.id === jawabanId)
+        // Jika objek ditemukan, tambahkan skornya ke skor total
+        if (pilihanJawaban) {
+          skor += Number(pilihanJawaban.skor)
+        }
+      })
+    } else {
+      skor = pilihanData?.find((item) => item?.id === jawabanNow)?.skor
+    }
 
     // Mengecek jika skor lebih dari 0 pada pilihan dengan ID yang sama dengan jawaban saat ini (jawabanNow)
     if (skor > 0) {
