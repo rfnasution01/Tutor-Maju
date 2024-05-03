@@ -4,9 +4,11 @@ import { Dispatch, SetStateAction } from 'react'
 export function ResultHeader({
   type,
   setType,
+  setUkuranSoal,
 }: {
   type: string
   setType: Dispatch<SetStateAction<string>>
+  setUkuranSoal: Dispatch<SetStateAction<string>>
 }) {
   return (
     <div className="flex items-center justify-between">
@@ -31,6 +33,34 @@ export function ResultHeader({
             {item}
           </div>
         ))}
+      </div>
+      <div className={`hidden ${type === 'pembahasan' && 'phones:block'}`}>
+        <div className="flex items-center gap-x-16">
+          <p
+            className="text-[2rem] italic hover:cursor-pointer"
+            onClick={() => {
+              setUkuranSoal('sm')
+            }}
+          >
+            Aa
+          </p>
+          <p
+            className="text-[2.4rem] italic hover:cursor-pointer"
+            onClick={() => {
+              setUkuranSoal('md')
+            }}
+          >
+            Aa
+          </p>
+          <p
+            className="text-[2.8rem] italic hover:cursor-pointer"
+            onClick={() => {
+              setUkuranSoal('lg')
+            }}
+          >
+            Aa
+          </p>
+        </div>
       </div>
     </div>
   )

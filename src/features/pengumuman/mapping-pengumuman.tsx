@@ -1,6 +1,7 @@
-import { CardNews2 } from '@/components/ui/card'
+import { CardNews2, CardNews2Skeleton } from '@/components/ui/card'
 import { MenuTitle } from '@/components/ui/title'
 import { BeritaType } from '@/libs/interface'
+import DataNotFound from '@/pages/data-not-found'
 import { useGetPengumumanQuery } from '@/store/slices/pengumunanAPI'
 import { useEffect, useState } from 'react'
 
@@ -9,7 +10,11 @@ export function MappingPengumuman() {
   const pageNumber = 1
   const [pengumuman, setPengumuman] = useState<BeritaType[]>()
 
-  const { data: dataPengumuman } = useGetPengumumanQuery({
+  const {
+    data: dataPengumuman,
+    isLoading,
+    isFetching,
+  } = useGetPengumumanQuery({
     page_size: pageSize,
     page_number: pageNumber,
     search: '',
@@ -24,7 +29,13 @@ export function MappingPengumuman() {
   return (
     <div className="flex h-full flex-col gap-y-32">
       <MenuTitle title="Trending" />
-      <CardNews2 data={pengumuman} />
+      {isLoading || isFetching ? (
+        <CardNews2Skeleton />
+      ) : pengumuman?.length === 0 ? (
+        <DataNotFound />
+      ) : (
+        <CardNews2 data={pengumuman} />
+      )}
     </div>
   )
 }

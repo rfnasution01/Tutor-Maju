@@ -15,7 +15,11 @@ export default function Home() {
   const pageNumber = currentPage ?? 1
   const [berita, setBerita] = useState<BeritaType[]>()
 
-  const { data } = useGetBeritaQuery({
+  const {
+    data,
+    isLoading: beritaLoading,
+    isFetching: beritaFething,
+  } = useGetBeritaQuery({
     page_size: pageSize,
     page_number: pageNumber,
     search: find,
@@ -26,6 +30,8 @@ export default function Home() {
       setBerita(data?.data)
     }
   }, [data?.data])
+
+  const isLoading = beritaLoading || beritaFething
 
   return (
     <main className="flex h-screen flex-col bg-gradient-to-br from-purple-50 via-blue-50 to-orange-50">
@@ -38,7 +44,7 @@ export default function Home() {
       <div className="scrollbar flex max-h-full flex-1 flex-col gap-y-32 overflow-y-auto p-32">
         <div className="grid grid-cols-12 gap-32">
           <div className="col-span-9 phones:col-span-12">
-            <MappingBerita berita={berita} />
+            <MappingBerita berita={berita} isLoading={isLoading} />
           </div>
           <div className="col-span-3 phones:col-span-12">
             <MappingPengumuman />

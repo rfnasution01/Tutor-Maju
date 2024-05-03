@@ -1,8 +1,9 @@
-import { CardNews } from '@/components/ui/card'
+import { CardNews, CardNewsSkeleton } from '@/components/ui/card'
 import { MenuTitle } from '@/components/ui/title'
 import { convertSlugToText } from '@/libs/helpers/format-text'
 import { useSearch } from '@/libs/hooks/useSearch'
 import { BeritaType } from '@/libs/interface'
+import DataNotFound from '@/pages/data-not-found'
 import { getSearchSlice } from '@/store/reducer/stateSearch'
 import { useGetBeritaKategoriQuery } from '@/store/slices/beritaAPI'
 import { useGetPengumumanKategoriQuery } from '@/store/slices/pengumunanAPI'
@@ -21,7 +22,11 @@ export function NewsType() {
 
   const data = typeParams?.includes('berita-utama') ? berita : pengumuman
 
-  const { data: dataBerita } = useGetBeritaKategoriQuery(
+  const {
+    data: dataBerita,
+    isLoading: beritaLoading,
+    isFetching: beritaFething,
+  } = useGetBeritaKategoriQuery(
     {
       page_size: pageSize,
       page_number: pageNumber,
@@ -37,7 +42,11 @@ export function NewsType() {
     }
   }, [dataBerita?.data, find])
 
-  const { data: dataPengumuman } = useGetPengumumanKategoriQuery(
+  const {
+    data: dataPengumuman,
+    isLoading: pengumumanLoading,
+    isFetching: pengumumanFetching,
+  } = useGetPengumumanKategoriQuery(
     {
       page_size: pageSize,
       page_number: pageNumber,
@@ -55,7 +64,16 @@ export function NewsType() {
   return (
     <>
       <MenuTitle title={convertSlugToText(typeParams)} />
-      <CardNews data={data} />
+      {beritaFething ||
+      beritaLoading ||
+      pengumumanLoading ||
+      pengumumanFetching ? (
+        <CardNewsSkeleton />
+      ) : pengumuman?.length === 0 ? (
+        <DataNotFound />
+      ) : (
+        <CardNews data={data} />
+      )}
     </>
   )
 }

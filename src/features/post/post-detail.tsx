@@ -15,7 +15,11 @@ export function PostDetail() {
   const contentParams = searchParams.get('content')
   const typeParams = searchParams.get('type')
 
-  const { data: dataDetailBerita } = useGetBeritaDetailQuery(
+  const {
+    data: dataDetailBerita,
+    isLoading: beritaLoading,
+    isFetching: beritaFething,
+  } = useGetBeritaDetailQuery(
     {
       seo: contentParams,
     },
@@ -31,7 +35,11 @@ export function PostDetail() {
     }
   }, [dataDetailBerita?.data])
 
-  const { data: dataDetailPengumuman } = useGetPengumumanDetailQuery(
+  const {
+    data: dataDetailPengumuman,
+    isLoading: pengumumanLoading,
+    isFetching: pengumumanFething,
+  } = useGetPengumumanDetailQuery(
     {
       seo: contentParams,
     },
@@ -53,10 +61,23 @@ export function PostDetail() {
         data={
           typeParams?.includes('pengumuman') ? detailPengumuman : detailBerita
         }
+        isLoading={
+          beritaFething ||
+          beritaLoading ||
+          pengumumanFething ||
+          pengumumanLoading
+        }
       />
+
       <PostRelated
         data={
           typeParams?.includes('pengumuman') ? pengumumanRelated : beritaRelated
+        }
+        isLoading={
+          beritaFething ||
+          beritaLoading ||
+          pengumumanFething ||
+          pengumumanLoading
         }
       />
     </div>

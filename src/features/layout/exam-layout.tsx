@@ -18,8 +18,11 @@ import clsx from 'clsx'
 import { konversiFormat } from '@/libs/helpers/convert-jawaban'
 import { Bounce, ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Loader2 } from 'lucide-react'
+import Loading from '@/components/Loading'
+import { DialogHelpers } from '@/components/ui/dialog'
+import { ExamNavigationModal } from '../exam/exam-navigation-modal'
 
 export default function ExamLayout() {
   const navigate = useNavigate()
@@ -48,7 +51,13 @@ export default function ExamLayout() {
     (item) => Number(item?.number) == noSoal,
   )?.number
 
-  const { data } = useGetSoalUjianQuery(
+  const [isShowModal, setIsShowModal] = useState<boolean>(false)
+
+  const {
+    data,
+    isLoading: ujianLoading,
+    isFetching: ujianFetching,
+  } = useGetSoalUjianQuery(
     {
       id_ujian: soalParams,
     },
@@ -125,6 +134,8 @@ export default function ExamLayout() {
     }
   }, [isError, error])
 
+  const isDisabled = ujianLoading || isLoading || ujianFetching
+
   return (
     <div className="scrollbar flex h-full max-h-screen flex-col overflow-y-auto bg-gradient-to-br from-purple-50 via-blue-50 to-orange-50">
       {/* --- HEader --- */}
@@ -150,35 +161,38 @@ export default function ExamLayout() {
               setIsShow={setIsShowSoal}
             />
             <div className="scrollbar h-full flex-1 overflow-y-auto">
-              {isShowSoal && (
-                <div
-                  className={clsx('flex flex-col gap-y-24 bg-white p-32', {
-                    'text-[2rem]': ukuranSoal?.includes('sm'),
-                    'text-[2.4rem]': ukuranSoal?.includes('md'),
-                    'text-[2.8rem]': ukuranSoal?.includes('lg'),
-                  })}
-                  style={{
-                    borderBottomLeftRadius: '1rem',
-                    borderBottomRightRadius: '1rem',
-                  }}
-                >
-                  <ExamSoalQuestion question={soalNow} />
-                  <ExamSoalAnswer
-                    optionsSoal={jawabanNow}
-                    typeSoal={typeSoalNow}
-                    ukuranSoal={ukuranSoal}
-                    noSoal={Number(nomorSoalNow)}
-                    kodeSoal={kodeSoal}
-                    idSoal={idSoalNow}
-                  />
-                  <ExamSoalButton
-                    noSoal={noSoal}
-                    kodeSoal={kodeSoal}
-                    setNoSoal={setNoSoal}
-                    totalSoal={dataSoal?.length}
-                  />
-                </div>
-              )}
+              {isShowSoal &&
+                (isDisabled ? (
+                  <Loading />
+                ) : (
+                  <div
+                    className={clsx('flex flex-col gap-y-24 bg-white p-32', {
+                      'text-[2rem]': ukuranSoal?.includes('sm'),
+                      'text-[2.4rem]': ukuranSoal?.includes('md'),
+                      'text-[2.8rem]': ukuranSoal?.includes('lg'),
+                    })}
+                    style={{
+                      borderBottomLeftRadius: '1rem',
+                      borderBottomRightRadius: '1rem',
+                    }}
+                  >
+                    <ExamSoalQuestion question={soalNow} />
+                    <ExamSoalAnswer
+                      optionsSoal={jawabanNow}
+                      typeSoal={typeSoalNow}
+                      ukuranSoal={ukuranSoal}
+                      noSoal={Number(nomorSoalNow)}
+                      kodeSoal={kodeSoal}
+                      idSoal={idSoalNow}
+                    />
+                    <ExamSoalButton
+                      noSoal={noSoal}
+                      kodeSoal={kodeSoal}
+                      setNoSoal={setNoSoal}
+                      totalSoal={dataSoal?.length}
+                    />
+                  </div>
+                ))}
             </div>
           </div>
           {/* ---- Navigasi ---- */}
@@ -220,14 +234,14 @@ export default function ExamLayout() {
                       <div
                         className="flex"
                         onClick={() => {
-                          if (!isLoading) {
-                            handleSelesai()
+                          if (!isDisabled) {
+                            setIsShowModal(true)
                           }
                         }}
                       >
                         <div className="rounded-xl bg-emerald-500 px-32 py-16 font-bold uppercase tracking-1.5 text-white hover:cursor-pointer hover:bg-emerald-700">
                           Selesai{' '}
-                          {isLoading && (
+                          {isDisabled && (
                             <span className="animate-spin duration-200">
                               <Loader2 size={16} />
                             </span>
@@ -258,6 +272,27 @@ export default function ExamLayout() {
         </div>
       </div>
       <ToastContainer />
+      <DialogHelpers
+        title={
+          <div className="flex h-[7.6rem] items-center bg-primary-shade-500 px-24 text-[3.2rem] text-secondary">
+            <Link to="/">
+              Smart<span className="text-primary-shade-200">Learning</span>
+            </Link>
+          </div>
+        }
+        open={isShowModal}
+        setOpen={setIsShowModal}
+        height="auto"
+        noPadding
+        isPhoneAuto
+        customComponent={
+          <ExamNavigationModal
+            setIsShow={setIsShowModal}
+            handleSubmit={handleSelesai}
+            totalSoal={dataSoal?.length}
+          />
+        }
+      />
     </div>
   )
 }

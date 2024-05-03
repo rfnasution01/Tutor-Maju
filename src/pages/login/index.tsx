@@ -2,7 +2,15 @@ import { Form } from '@/components/Form'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
-import { Eye, EyeOff, Lock, Mail, UserCircle } from 'lucide-react'
+import {
+  CircleAlert,
+  Eye,
+  EyeOff,
+  Loader,
+  Lock,
+  Mail,
+  UserCircle,
+} from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { FormLabelInput } from '@/components/ui/input'
 import { useNavigate } from 'react-router-dom'
@@ -12,12 +20,14 @@ import { useCreateLoginMutation } from '@/store/slices/loginAPI'
 import Cookies from 'js-cookie'
 import { loginSchema } from '@/libs/consts/schema/loginSchema'
 import { Button } from '@/components/Button'
+import Tooltips from '@/components/Tooltip'
 
 export default function LoginPage() {
   const navigate = useNavigate()
   const [isShow, setIsShow] = useState<boolean>(false)
   const [createLogin, { isSuccess, isError, error, isLoading }] =
     useCreateLoginMutation()
+
   const disabled = isLoading
 
   const form = useForm<zod.infer<typeof loginSchema>>({
@@ -53,7 +63,7 @@ export default function LoginPage() {
         transition: Bounce,
       })
       setTimeout(() => {
-        navigate('/app')
+        navigate('/app/settings')
       }, 3000)
     }
   }, [isSuccess])
@@ -88,6 +98,19 @@ export default function LoginPage() {
           <div className="flex flex-col gap-y-32 text-black">
             <FormLabelInput
               form={form}
+              label={
+                <div className="flex items-start gap-x-8">
+                  <span className="text-[2rem] phones:text-[3rem]">
+                    Username
+                  </span>
+                  <Tooltips
+                    triggerComponent={<CircleAlert size={16} />}
+                    tooltipContent={
+                      <span>Username default adalah No Peserta / NISN</span>
+                    }
+                  />
+                </div>
+              }
               placeholder="Write your username"
               name="username"
               prefix={<UserCircle size={16} />}
@@ -98,6 +121,19 @@ export default function LoginPage() {
 
             <FormLabelInput
               form={form}
+              label={
+                <div className="flex items-start gap-x-8">
+                  <span className="text-[2rem] phones:text-[3rem]">
+                    Password
+                  </span>
+                  <Tooltips
+                    triggerComponent={<CircleAlert size={16} />}
+                    tooltipContent={
+                      <span>Password default adalah No Peserta / NISN</span>
+                    }
+                  />
+                </div>
+              }
               placeholder="Write your password"
               name="password"
               prefix={<Lock size={16} />}
@@ -110,14 +146,18 @@ export default function LoginPage() {
 
             <div className="flex items-center justify-between text-[2rem]">
               <div className="flex items-center gap-x-8">
-                <input type="checkbox" className="hover:cursor-pointer" />
+                <input
+                  type="checkbox"
+                  disabled
+                  className="hover:cursor-not-allowed"
+                />
                 <span>Remember Me</span>
               </div>
               <span
-                className="hover:cursor-pointer hover:text-primary-shade-500"
-                onClick={() => {
-                  navigate('forgot-password')
-                }}
+                className="hover:cursor-not-allowed hover:text-primary-shade-500"
+                // onClick={() => {
+                //   navigate('forgot-password')
+                // }}
               >
                 Forgot Password?
               </span>
@@ -132,7 +172,12 @@ export default function LoginPage() {
                 type="submit"
                 child={
                   <div className="flex items-center justify-center gap-x-8 text-[2rem]">
-                    Login
+                    Login{' '}
+                    {isLoading && (
+                      <span className="animate-spin duration-100">
+                        <Loader />
+                      </span>
+                    )}
                   </div>
                 }
               />
@@ -180,10 +225,10 @@ export default function LoginPage() {
               <h5 className="text-center">
                 Don't have an account?{' '}
                 <span
-                  className="text-primary-shade-500 hover:cursor-pointer"
-                  onClick={() => {
-                    navigate('/registrasi')
-                  }}
+                  className="text-primary-shade-500 hover:cursor-not-allowed"
+                  // onClick={() => {
+                  //   navigate('/registrasi')
+                  // }}
                 >
                   Registrasi
                 </span>

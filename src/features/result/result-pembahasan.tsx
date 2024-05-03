@@ -12,30 +12,29 @@ import { ResultPembahasanDetail } from './result-pembahasan-detail'
 export function ResultPembahasan({
   data,
   kategori,
-  isLoading,
   noSoal,
   setNoSoal,
   kodeSoal,
   totalSoal,
+  setUkuranSoal,
+  ukuranSoal,
 }: {
   data: PembahasanType[]
   kategori: string
-  isLoading: boolean
   totalSoal: number
   noSoal: number
   setNoSoal: Dispatch<SetStateAction<number>>
   kodeSoal: string
+  setUkuranSoal: Dispatch<SetStateAction<string>>
+  ukuranSoal: string
 }) {
-  const [isShow, setIsShow] = useState<boolean>(false)
+  const [isShow, setIsShow] = useState<boolean>(true)
   const [isShowSoal, setIsShowSoal] = useState<boolean>(true)
   const [isShowNav, setIsShowNav] = useState<boolean>(true)
-  const [ukuranSoal, setUkuranSoal] = useState<string>('sm')
 
   const soalNow = data?.find(
     (item) => Number(item?.urutan) == noSoal,
   )?.pertanyaan
-
-  console.log({ isLoading })
 
   return (
     <div className="scrollbar h-full flex-1 overflow-y-auto">
@@ -56,6 +55,7 @@ export function ResultPembahasan({
             setUkuranSoal={setUkuranSoal}
             isShow={isShowSoal}
             setIsShow={setIsShowSoal}
+            data={data}
           />
           <div className="scrollbar h-full flex-1 overflow-y-auto">
             {isShowSoal && (
@@ -78,7 +78,6 @@ export function ResultPembahasan({
                 />
 
                 <ResultPembahasanDetail data={data} noSoal={noSoal} />
-
                 <ResultSoalButton
                   noSoal={noSoal}
                   kodeSoal={kodeSoal}

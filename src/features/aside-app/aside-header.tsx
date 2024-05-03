@@ -44,7 +44,7 @@ export function AsideHeader() {
         title={
           <div className="flex h-[7.6rem] items-center bg-primary-shade-500 px-24 text-[3.2rem] text-secondary">
             <Link to="/">
-              Tutor<span className="text-primary-shade-200">Maju</span>
+              CBT<span className="text-primary-shade-200">SmartLearning</span>
             </Link>
           </div>
         }

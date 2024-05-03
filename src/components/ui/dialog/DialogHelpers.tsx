@@ -16,6 +16,8 @@ export function DialogHelpers({
   customComponent,
   noPadding,
   size,
+  height,
+  isPhoneAuto,
 }: {
   open: boolean
   setOpen: Dispatch<SetStateAction<boolean>>
@@ -23,6 +25,8 @@ export function DialogHelpers({
   customComponent?: ReactNode
   noPadding?: boolean
   size?: 'full' | 'large' | 'medium' | 'small'
+  isPhoneAuto?: boolean
+  height?: string
 }) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -35,8 +39,10 @@ export function DialogHelpers({
               ? '50%'
               : size?.includes('small')
                 ? '30%'
-                : '',
-          height: size?.includes('full') ? '100%' : '',
+                : isPhoneAuto
+                  ? '75%'
+                  : '',
+          height: size?.includes('full') ? '100%' : height ? height : '',
         }}
       >
         <DialogHeader>
