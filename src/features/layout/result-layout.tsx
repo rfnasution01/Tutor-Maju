@@ -16,7 +16,11 @@ export default function ResultLayout() {
 
   const noSoalParams = searchParams.get('nomor') ?? 1
   const [noSoal, setNoSoal] = useState<number>(Number(noSoalParams))
-  const { data: dataStatistikUjian } = useGetStatistikUjianQuery(
+  const {
+    data: dataStatistikUjian,
+    isLoading: statistikLoading,
+    isFetching: statistikFething,
+  } = useGetStatistikUjianQuery(
     {
       id_ujian: kodeUjian,
     },
@@ -31,15 +35,18 @@ export default function ResultLayout() {
     }
   }, [dataStatistikUjian?.data])
 
-  const { data: dataPembahasanUjian, isLoading: isLoadingPembahasan } =
-    useGetPembahasanUjianQuery(
-      {
-        id_ujian: kodeUjian,
-      },
-      {
-        skip: kodeUjian === null || kodeUjian === undefined || kodeUjian === '',
-      },
-    )
+  const {
+    data: dataPembahasanUjian,
+    isLoading: pembahasanLoading,
+    isFetching: pembahasanFething,
+  } = useGetPembahasanUjianQuery(
+    {
+      id_ujian: kodeUjian,
+    },
+    {
+      skip: kodeUjian === null || kodeUjian === undefined || kodeUjian === '',
+    },
+  )
 
   useEffect(() => {
     if (dataPembahasanUjian?.data) {
@@ -56,7 +63,12 @@ export default function ResultLayout() {
         dataStatistik={dataStatistik}
         idUjian={kodeUjian}
         dataPembahasan={dataPembahasan}
-        isLoading={isLoadingPembahasan}
+        isLoading={
+          statistikFething ||
+          statistikLoading ||
+          pembahasanFething ||
+          pembahasanLoading
+        }
         noSoal={noSoal}
         setNoSoal={setNoSoal}
         totalSoal={dataPembahasan?.length}

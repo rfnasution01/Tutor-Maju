@@ -22,27 +22,34 @@ export function ResultHome({
   totalSoal: number
 }) {
   const [type, setType] = useState<string>('statistik')
+  const [ukuranSoal, setUkuranSoal] = useState<string>('sm')
   const [kategori, setKategori] = useState<string>()
 
   return (
-    <div className="flex h-full flex-col gap-y-32 px-80 py-32 text-[2rem] phones:px-32">
-      <ResultHeader type={type} setType={setType} />
+    <div className="scrollbar flex h-full flex-col gap-y-32 overflow-y-auto px-80 py-32 text-[2rem] phones:px-32">
+      <ResultHeader
+        type={type}
+        setType={setType}
+        setUkuranSoal={setUkuranSoal}
+      />
       {type.includes('statistik') ? (
         <ResultStatistik
           data={dataStatistik}
           setKategori={setKategori}
           setType={setType}
           idUjian={idUjian}
+          isLoading={isLoading}
         />
       ) : (
         <ResultPembahasan
           data={dataPembahasan}
           kategori={kategori}
-          isLoading={isLoading}
           totalSoal={totalSoal}
           noSoal={noSoal}
           setNoSoal={setNoSoal}
           kodeSoal={idUjian}
+          setUkuranSoal={setUkuranSoal}
+          ukuranSoal={ukuranSoal}
         />
       )}
     </div>

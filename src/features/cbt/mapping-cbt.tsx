@@ -18,6 +18,8 @@ export function MappingCBT({ type }: { type: string }) {
     }
   }, [data?.data])
 
+  // const loading = isLoading || isFetching
+
   return (
     <div className="grid grid-cols-12 gap-32">
       {type?.includes('home') ? (
@@ -25,7 +27,8 @@ export function MappingCBT({ type }: { type: string }) {
           <HomeCBT />
         </div>
       ) : type?.includes('ujian') ? (
-        <div className="col-span-12 flex flex-col gap-32">
+        <div className="col-span-12">
+          {/* <UjianHome data={ujian} loading={loading} /> */}
           <PercobaanLangkah />
           <div className="grid grid-cols-12 gap-32">
             <MappingPercobaan

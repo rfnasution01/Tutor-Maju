@@ -50,4 +50,5 @@ export const ForgotPasswordPage = loadable(
 // ----- Registrasi -----
 export const RegistrasiPage = loadable(() => import('@/pages/registrasi'))
 
-// ----- CBT ----
+// ----- Ujian ----
+export const UjianPage = loadable(() => import('@/pages/ujian'))

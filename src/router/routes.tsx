@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, redirect } from 'react-router-dom'
 import {
   ActivateAccountPage,
   AppLayout,
@@ -20,6 +20,7 @@ import {
   RootLayout,
   SettingApp,
   TryOutApp,
+  UjianPage,
 } from './loadables'
 import Cookies from 'js-cookie'
 
@@ -31,14 +32,54 @@ export const router = createBrowserRouter([
       {
         path: '',
         element: <HomePage />,
+        loader: async () => {
+          const jwtPayload = Cookies.get('token')
+
+          if (!jwtPayload) {
+            return redirect('/login')
+          }
+
+          return null
+        },
       },
       {
         path: 'news',
         element: <NewsLayout />,
+        loader: async () => {
+          const jwtPayload = Cookies.get('token')
+
+          if (!jwtPayload) {
+            return redirect('/login')
+          }
+
+          return null
+        },
       },
       {
         path: 'post',
         element: <PostLayout />,
+        loader: async () => {
+          const jwtPayload = Cookies.get('token')
+
+          if (!jwtPayload) {
+            return redirect('/login')
+          }
+
+          return null
+        },
+      },
+      {
+        path: 'ujian',
+        element: <UjianPage />,
+        loader: async () => {
+          const jwtPayload = Cookies.get('token')
+
+          if (!jwtPayload) {
+            return redirect('/login')
+          }
+
+          return null
+        },
       },
       {
         path: 'app',
@@ -47,9 +88,7 @@ export const router = createBrowserRouter([
           const jwtPayload = Cookies.get('token')
 
           if (!jwtPayload) {
-            window.location.href = `/login`
-            Cookies.remove('token')
-            return null
+            return redirect('/login')
           }
 
           return null
@@ -72,8 +111,7 @@ export const router = createBrowserRouter([
           const jwtPayload = Cookies.get('token')
 
           if (jwtPayload) {
-            window.location.href = `/app`
-            return null
+            return redirect('/app')
           }
 
           return null
@@ -100,8 +138,7 @@ export const router = createBrowserRouter([
           const jwtPayload = Cookies.get('token')
 
           if (jwtPayload) {
-            window.location.href = `/app`
-            return null
+            return redirect('/app')
           }
 
           return null
@@ -116,8 +153,29 @@ export const router = createBrowserRouter([
       {
         path: 'exam',
         element: <ExamLayout />,
+        loader: async () => {
+          const jwtPayload = Cookies.get('token')
+
+          if (!jwtPayload) {
+            return redirect('/login')
+          }
+
+          return null
+        },
       },
-      { path: 'result', element: <ResultLayout /> },
+      {
+        path: 'result',
+        element: <ResultLayout />,
+        loader: async () => {
+          const jwtPayload = Cookies.get('token')
+
+          if (!jwtPayload) {
+            return redirect('/login')
+          }
+
+          return null
+        },
+      },
     ],
   },
   {

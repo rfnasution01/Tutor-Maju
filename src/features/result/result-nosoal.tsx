@@ -95,7 +95,7 @@ export function ResultNoSoal({
               'bg-red-500 text-slate-50':
                 checkPositiveScoreSelectedAnswer(index + 1) === false &&
                 !isOpenNow(index + 1),
-              'bg-slate-500 text-slate-50':
+              'bg-slate-200 text-slate-500':
                 checkPositiveScoreSelectedAnswer(index + 1) === undefined &&
                 !isOpenNow(index + 1),
             },

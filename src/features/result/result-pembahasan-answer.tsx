@@ -33,17 +33,21 @@ export function ResultPembahasanAnswer({
         .map((item, idx) => (
           <div
             className={clsx(
-              'flex items-center gap-12 rounded-lg border border-slate-300 p-16 hover:cursor-pointer hover:bg-emerald-500 hover:text-white',
+              'flex items-center gap-12 rounded-lg border border-slate-300 p-16 hover:cursor-pointer ',
               {
-                'border-transparent bg-emerald-500 text-white hover:bg-emerald-700':
+                'border-transparent bg-emerald-500 text-white ':
                   item?.id?.includes(jawabanNow) && Number(item?.skor) > 0,
               },
               {
-                'border-transparent bg-red-500 text-white hover:bg-emerald-700':
+                'border-transparent bg-red-500 text-white ':
                   item?.id?.includes(jawabanNow) && Number(item?.skor) <= 0,
               },
               {
-                'border-transparent bg-emerald-500 text-white hover:bg-emerald-700':
+                'border-transparent bg-emerald-500 text-white ':
+                  item?.id?.includes(jawabanNow) && Number(item?.skor) > 0,
+              },
+              {
+                'border-transparent bg-emerald-500 text-white ':
                   typeNow === 'MULTIPLE_ANSWER' &&
                   isMultipleAnswer &&
                   jawabanNow?.some(
@@ -51,7 +55,7 @@ export function ResultPembahasanAnswer({
                   ),
               },
               {
-                'border-transparent bg-red-500 text-white hover:bg-emerald-700':
+                'border-transparent bg-red-500 text-white ':
                   typeNow === 'MULTIPLE_ANSWER' &&
                   isMultipleAnswer &&
                   jawabanNow?.some(
@@ -66,29 +70,66 @@ export function ResultPembahasanAnswer({
                 className={clsx(
                   'flex items-center justify-center rounded-full phones:rounded-full',
                   {
+                    'border-transparent bg-emerald-100 text-emerald-500 ':
+                      item?.id?.includes(jawabanNow) &&
+                      Number(item?.skor) > 0 &&
+                      typeNow !== 'MULTIPLE_ANSWER' &&
+                      !isMultipleAnswer,
+                  },
+                  {
+                    'border-transparent bg-emerald-500 text-white ':
+                      !item?.id?.includes(jawabanNow) &&
+                      Number(item?.skor) > 0 &&
+                      typeNow !== 'MULTIPLE_ANSWER' &&
+                      !isMultipleAnswer,
+                  },
+                  {
+                    'border-transparent bg-red-100 text-red-500':
+                      item?.id?.includes(jawabanNow) &&
+                      Number(item?.skor) <= 0 &&
+                      typeNow !== 'MULTIPLE_ANSWER' &&
+                      !isMultipleAnswer,
+                  },
+                  {
+                    'border-transparent bg-red-500 text-white':
+                      !item?.id?.includes(jawabanNow) &&
+                      Number(item?.skor) <= 0 &&
+                      typeNow !== 'MULTIPLE_ANSWER' &&
+                      !isMultipleAnswer,
+                  },
+                  {
+                    'border-transparent bg-emerald-100 text-emerald-500':
+                      !item?.id?.includes(jawabanNow) &&
+                      Number(item?.skor) > 0 &&
+                      typeNow === 'MULTIPLE_ANSWER' &&
+                      isMultipleAnswer,
+                  },
+
+                  {
+                    'border-transparent bg-emerald-500 text-white':
+                      jawabanNow === null &&
+                      Number(item?.skor) > 0 &&
+                      typeNow === 'MULTIPLE_ANSWER',
+                  },
+                  {
+                    'border-transparent bg-red-500 text-white':
+                      jawabanNow === null &&
+                      Number(item?.skor) <= 0 &&
+                      typeNow === 'MULTIPLE_ANSWER',
+                  },
+
+                  {
+                    'border-transparent bg-red-100 text-red-500':
+                      !item?.id?.includes(jawabanNow) &&
+                      Number(item?.skor) <= 0 &&
+                      typeNow === 'MULTIPLE_ANSWER' &&
+                      isMultipleAnswer,
+                  },
+
+                  {
                     'h-[2.4rem] w-[2.4rem]': ukuranSoal?.includes('sm'),
                     'h-[2.8rem] w-[2.8rem]': ukuranSoal?.includes('md'),
                     'h-[3.2rem] w-[3.2rem]': ukuranSoal?.includes('lg'),
-                    'bg-red-500 text-white':
-                      !item?.id?.includes(jawabanNow) && Number(item.skor) <= 0,
-                    'bg-green-500 text-white':
-                      !item?.id?.includes(jawabanNow) && Number(item.skor) > 0,
-                    'bg-white text-blue-500':
-                      (item?.id?.includes(jawabanNow) &&
-                        Number(item?.skor) <= 0) ||
-                      (typeNow === 'MULTIPLE_ANSWER' &&
-                        isMultipleAnswer &&
-                        jawabanNow?.some(
-                          (list) => list === item?.id && item?.skor <= 0,
-                        )),
-                    'bg-white text-green-500':
-                      (item?.id?.includes(jawabanNow) &&
-                        Number(item?.skor) <= 0) ||
-                      (typeNow === 'MULTIPLE_ANSWER' &&
-                        isMultipleAnswer &&
-                        jawabanNow?.some(
-                          (list) => list === item?.id && item?.skor > 0,
-                        )),
                   },
                 )}
               >
@@ -99,7 +140,7 @@ export function ResultPembahasanAnswer({
               dangerouslySetInnerHTML={{ __html: item?.pilihan }}
               className="flex-1"
             />
-            <div className="rounded-2xl bg-slate-500 px-32 py-12 text-white">
+            <div className="rounded-2xl bg-slate-200 px-32 py-12 text-slate-700">
               Skor: {Number(item?.skor)?.toFixed()}
             </div>
           </div>

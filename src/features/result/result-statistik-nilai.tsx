@@ -1,6 +1,9 @@
 import { StatistikType } from '@/libs/interface'
 import { Dispatch, SetStateAction } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { StatistikSoalPieChart } from './result-statistik-soal'
+import { StatistikDijawabBarChart } from './result-statistik-dijawab'
+import { StatistikBenarBarChart } from './result-statistik-benar'
 
 export function ResultStatistikNilai({
   data,
@@ -47,6 +50,12 @@ export function ResultStatistikNilai({
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="flex gap-32 phones:flex-col">
+        <StatistikSoalPieChart jsonData={data} />
+        <StatistikDijawabBarChart jsonData={data} />
+        <StatistikBenarBarChart jsonData={data} />
       </div>
     </div>
   )

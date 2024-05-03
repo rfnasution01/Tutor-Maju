@@ -1,3 +1,4 @@
+import { PembahasanType } from '@/libs/interface'
 import { ChevronUp } from 'lucide-react'
 import { Dispatch, SetStateAction } from 'react'
 
@@ -7,13 +8,19 @@ export function ExamPembahasanHeader({
   setUkuranSoal,
   setIsShow,
   isShow,
+  data,
 }: {
   noSoal: number
   totalSoal: number
   setUkuranSoal: Dispatch<SetStateAction<string>>
   setIsShow: Dispatch<SetStateAction<boolean>>
   isShow: boolean
+  data: PembahasanType[]
 }) {
+  const kategoriNow = data?.find(
+    (item) => Number(item?.urutan) == noSoal,
+  )?.nama_kategori
+
   return (
     <div className="flex flex-col bg-red-300">
       {/* --- No Soal --- */}
@@ -24,9 +31,12 @@ export function ExamPembahasanHeader({
             <span className="bg-white px-8 py-4 text-primary">{noSoal}</span> /{' '}
             {totalSoal}
           </p>
+          <p className="rounded-full bg-slate-100 px-24 py-4 text-black">
+            {kategoriNow}
+          </p>
         </div>
         <div className="flex items-center gap-x-32">
-          <div className="flex items-center gap-x-16">
+          <div className="flex items-center gap-x-16 phones:hidden">
             <p
               className="text-[2rem] italic hover:cursor-pointer"
               onClick={() => {

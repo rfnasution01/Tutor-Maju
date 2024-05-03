@@ -1,11 +1,11 @@
 import { Button } from '@/components/Button'
 import { UjianType } from '@/libs/interface/cbtType'
 import clsx from 'clsx'
-import { List, Play, RefreshCcw, Timer } from 'lucide-react'
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { List, Play, Timer } from 'lucide-react'
+import { Dispatch, SetStateAction } from 'react'
 import { StatistikNilai } from './statistik-nilai'
-import { useGetResetUjianQuery } from '@/store/slices/cbtAPI'
-import { Bounce, ToastContainer, toast } from 'react-toastify'
+// import { useGetResetUjianQuery } from '@/store/slices/cbtAPI'
+// import { Bounce, ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 export function MappingPercobaan({
@@ -17,55 +17,55 @@ export function MappingPercobaan({
   setUjianName: Dispatch<SetStateAction<string>>
   ujian: UjianType[]
 }) {
-  const [idUjian, setIdUjian] = useState<string>()
-  const [isReset, setIsReset] = useState<boolean>(false)
-  const { data, isSuccess, isError, error } = useGetResetUjianQuery(
-    { id_ujian: idUjian },
-    {
-      skip:
-        !isReset || idUjian === null || idUjian === undefined || idUjian === '',
-    },
-  )
+  // const [idUjian, setIdUjian] = useState<string>()
+  // const [isReset, setIsReset] = useState<boolean>(false)
+  // const { data, isSuccess, isError, error } = useGetResetUjianQuery(
+  //   { id_ujian: idUjian },
+  //   {
+  //     skip:
+  //       !isReset || idUjian === null || idUjian === undefined || idUjian === '',
+  //   },
+  // )
 
-  useEffect(() => {
-    if (isSuccess) {
-      toast.success(`Ujian berhasil direset!`, {
-        position: 'top-center',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-        transition: Bounce,
-      })
-    }
-  }, [isSuccess])
+  // useEffect(() => {
+  //   if (isSuccess) {
+  //     toast.success(`Ujian berhasil direset!`, {
+  //       position: 'top-center',
+  //       autoClose: 5000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //       draggable: true,
+  //       progress: undefined,
+  //       theme: 'light',
+  //       transition: Bounce,
+  //     })
+  //   }
+  // }, [isSuccess])
 
-  useEffect(() => {
-    if (isError) {
-      const errorMsg = error as {
-        data?: {
-          message?: string
-        }
-      }
+  // useEffect(() => {
+  //   if (isError) {
+  //     const errorMsg = error as {
+  //       data?: {
+  //         message?: string
+  //       }
+  //     }
 
-      toast.error(`${errorMsg?.data?.message ?? 'Terjadi Kesalahan'}`, {
-        position: 'top-center',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-        transition: Bounce,
-      })
-    }
-  }, [isError, error])
+  //     toast.error(`${errorMsg?.data?.message ?? 'Terjadi Kesalahan'}`, {
+  //       position: 'top-center',
+  //       autoClose: 5000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //       draggable: true,
+  //       progress: undefined,
+  //       theme: 'light',
+  //       transition: Bounce,
+  //     })
+  //   }
+  // }, [isError, error])
 
-  console.log(data)
+  // console.log(data)
 
   return (
     <div className="col-span-6 flex flex-col gap-y-12 rounded-2xl bg-white p-24 phones:col-span-12">
@@ -104,7 +104,7 @@ export function MappingPercobaan({
                 </div>
               </div>
               <div className="flex items-center gap-x-16">
-                <Button
+                {/* <Button
                   variant="solid"
                   bgColor="bg-primary"
                   textColor="text-white"
@@ -123,7 +123,7 @@ export function MappingPercobaan({
                       </span>
                     </div>
                   }
-                />
+                /> */}
                 <Button
                   variant="outlined"
                   borderColor="border-primary"
@@ -155,7 +155,7 @@ export function MappingPercobaan({
           </div>
         ))}
       </div>
-      <ToastContainer />
+      {/* <ToastContainer /> */}
     </div>
   )
 }

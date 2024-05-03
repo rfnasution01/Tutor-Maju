@@ -26,7 +26,7 @@ export function HeaderMobile() {
             to="/"
             className="flex h-[7.6rem] items-center bg-primary-shade-500 px-24 text-[3.2rem] text-secondary"
           >
-            Tutor<span className="text-primary-shade-200">Maju</span>
+            CBT<span className="text-primary-shade-200">SmartLearning</span>
           </Link>
         }
         open={isShow}
